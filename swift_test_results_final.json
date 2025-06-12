@@ -1,0 +1,231 @@
+SwiftDateParser Test Suite
+================================================================================
+Swift version: TestComparison/main.swift
+SwiftDateParser version: 1.0.0
+================================================================================
+
+Running SwiftDateParser tests...
+--------------------------------------------------------------------------------
+✓ ISO datetime with T separator            | Input: '2003-09-25T10:49:41'
+  → 2003-09-25T08:49:41.000Z (5.94ms)
+
+✓ ISO datetime with space separator        | Input: '2003-09-25 10:49:41'
+  → 2003-09-25T08:49:41.000Z (0.01ms)
+
+✓ ISO date only                            | Input: '2003-09-25'
+  → 2003-09-24T22:00:00.000Z (0.01ms)
+
+✓ Compact ISO datetime                     | Input: '20030925T104941'
+  → 2003-09-25T08:49:41.000Z (0.11ms)
+
+✓ Compact ISO date                         | Input: '20030925'
+  → 2003-09-24T22:00:00.000Z (0.00ms)
+
+✓ US format MM/DD/YYYY                     | Input: '09/25/2003'
+  → 2003-09-24T22:00:00.000Z (0.07ms)
+  → Dayfirst: 2005-01-08T23:00:00.000Z
+
+✓ EU format DD/MM/YYYY                     | Input: '25/09/2003'
+  → 2005-01-08T23:00:00.000Z (0.01ms)
+  → Dayfirst: 2003-09-24T22:00:00.000Z
+
+✓ US format with dashes                    | Input: '09-25-2003'
+  → 2003-09-24T22:00:00.000Z (0.00ms)
+  → Dayfirst: 2005-01-08T23:00:00.000Z
+
+✓ EU format with dashes                    | Input: '25-09-2003'
+  → 2005-01-08T23:00:00.000Z (0.01ms)
+  → Dayfirst: 2003-09-24T22:00:00.000Z
+
+✓ US format with dots                      | Input: '09.25.2003'
+  → 2003-09-24T22:00:00.000Z (0.01ms)
+  → Dayfirst: 2005-01-08T23:00:00.000Z
+
+✓ EU format with dots                      | Input: '25.09.2003'
+  → 2005-01-08T23:00:00.000Z (0.01ms)
+  → Dayfirst: 2003-09-24T22:00:00.000Z
+
+✓ Year first with slashes                  | Input: '2003/09/25'
+  → 2003-09-24T22:00:00.000Z (0.00ms)
+  → Dayfirst: 2005-01-08T23:00:00.000Z
+
+✓ Short date - ambiguous                   | Input: '10/09/03'
+  → 2003-10-08T22:00:00.000Z (0.01ms)
+  → Dayfirst: 2003-09-09T22:00:00.000Z
+
+✓ Short date with dashes                   | Input: '10-09-03'
+  → 2003-10-08T22:00:00.000Z (0.00ms)
+  → Dayfirst: 2003-09-09T22:00:00.000Z
+
+✓ Short date with dots                     | Input: '10.09.03'
+  → 2003-10-08T22:00:00.000Z (0.01ms)
+  → Dayfirst: 2003-09-09T22:00:00.000Z
+
+✓ Month abbreviation                       | Input: 'Sep 25 2003'
+  → 2003-09-24T22:00:00.000Z (0.90ms)
+
+✓ Full month name with comma               | Input: 'September 25, 2003'
+  → 2003-09-24T22:00:00.000Z (0.06ms)
+
+✓ Day first with month name                | Input: '25 Sep 2003'
+  → 2003-09-24T22:00:00.000Z (0.19ms)
+
+✓ Ordinal date                             | Input: '3rd of May 2001'
+  → 2001-05-02T22:00:00.000Z (1.72ms)
+
+✓ Ordinal date US style                    | Input: 'May 3rd, 2001'
+  → 2001-05-02T22:00:00.000Z (0.53ms)
+
+✓ Time only HH:MM:SS                       | Input: '10:36:28'
+  → 2025-06-13T08:36:28.000Z (0.02ms)
+
+✓ Time only HH:MM                          | Input: '10:36'
+  → 2025-06-13T08:36:00.000Z (0.01ms)
+
+✓ Time with PM                             | Input: '10:36:28 PM'
+  → 2025-06-13T20:36:28.000Z (0.01ms)
+
+✓ Time with AM                             | Input: '10:36:28 AM'
+  → 2025-06-13T08:36:28.000Z (0.01ms)
+
+✓ 24-hour time                             | Input: '22:36:28'
+  → 2025-06-13T20:36:28.000Z (0.01ms)
+
+✓ Unix date format                         | Input: 'Thu Sep 25 10:36:28 2003'
+  → 2003-09-25T08:36:28.000Z (0.23ms)
+
+✓ Abbreviated year with apostrophe         | Input: 'Wed, July 10, '96'
+  → 1996-07-09T22:00:00.000Z (0.32ms)
+
+✓ Complex format with AD                   | Input: '1996.July.10 AD 12:08 PM'
+  → 1996-07-10T10:08:00.000Z (0.48ms)
+
+✓ Logger format with milliseconds          | Input: '2003-09-25 10:49:41,502'
+  → 2003-09-25T08:49:41.502Z (0.44ms)
+
+✓ Apostrophe year without day name         | Input: 'July 10, '96'
+  → 1996-07-09T22:00:00.000Z (0.31ms)
+
+✓ Apostrophe year ISO style                | Input: ''96-07-10'
+  → 1996-07-09T22:00:00.000Z (0.31ms)
+
+✓ Apostrophe year with month abbreviation  | Input: '10-Jul-'96'
+  → 1996-07-09T22:00:00.000Z (0.41ms)
+
+✓ Apostrophe year end of string            | Input: 'December 25 '99'
+  → 1999-12-24T23:00:00.000Z (0.31ms)
+
+✓ BC year only                             | Input: '753 BC'
+  → 0754-12-31T23:42:30.000Z (0.46ms)
+
+✓ CE year                                  | Input: '2023 CE'
+  → 2022-12-31T23:00:00.000Z (0.47ms)
+
+✓ Year 1 AD                                | Input: '1 AD'
+  → 0001-12-31T23:42:30.000Z (0.46ms)
+
+✓ Date with BC                             | Input: 'December 31, 1 BC'
+  → 0002-12-31T23:42:30.000Z (0.47ms)
+
+✓ AD date without time                     | Input: '1996.July.10 AD'
+  → 1996-07-09T22:00:00.000Z (0.49ms)
+
+✓ Julius Caesar's death year               | Input: '44 BC'
+  → 0045-12-31T23:42:30.000Z (0.46ms)
+
+✗ Relative - today                         | Input: 'today'
+  → Error: Unable to parse date from string: 'today'
+  → Fuzzy: 2025-06-12T22:00:00.000Z
+
+✗ Relative - tomorrow                      | Input: 'tomorrow'
+  → Error: Unable to parse date from string: 'tomorrow'
+  → Fuzzy: 2025-06-13T22:00:00.000Z
+
+✗ Relative - yesterday                     | Input: 'yesterday'
+  → Error: Unable to parse date from string: 'yesterday'
+  → Fuzzy: 2025-06-11T22:00:00.000Z
+
+✗ Relative - days ago                      | Input: '3 days ago'
+  → Error: Unable to parse date from string: '3 days ago'
+  → Fuzzy: 2025-06-09T22:32:49.275Z
+
+✗ Relative - in weeks                      | Input: 'in 2 weeks'
+  → Error: Unable to parse date from string: 'in 2 weeks'
+  → Fuzzy: 2025-06-26T22:32:49.276Z
+
+✗ Relative - next month                    | Input: 'next month'
+  → Error: Unable to parse date from string: 'next month'
+  → Fuzzy: 2025-07-12T22:32:49.277Z
+
+✗ Relative - last year                     | Input: 'last year'
+  → Error: Unable to parse date from string: 'last year'
+  → Fuzzy: 2024-06-12T22:32:49.278Z
+
+✗ Empty string                             | Input: ''
+  → Error: Unable to parse date from string: ''
+
+✗ Invalid text                             | Input: 'not a date'
+  → Error: Unable to parse date from string: 'not a date'
+
+✓ Invalid date - not leap year             | Input: '2003-02-29'
+  → 2003-02-28T23:00:00.000Z (0.04ms)
+
+✓ Valid leap year date                     | Input: '2004-02-29'
+  → 2004-02-28T23:00:00.000Z (0.01ms)
+
+✓ Invalid date - September has 30 days     | Input: '2003-09-31'
+  → 2003-09-30T22:00:00.000Z (0.03ms)
+
+✓ Two digit number                         | Input: '99'
+  → 1999-06-12T22:00:00.000Z (0.01ms)
+
+✓ Two digit number                         | Input: '10'
+  → 2025-06-09T22:00:00.000Z (0.00ms)
+
+✓ Year only                                | Input: '2003'
+  → 2003-06-12T22:00:00.000Z (0.00ms)
+
+✓ Fuzzy - date in sentence                 | Input: 'Today is January 1, 2047 at 8:21:00AM'
+  → 2046-12-31T23:00:00.000Z (0.56ms)
+
+✗ Fuzzy - date at end                      | Input: 'The deadline is 2023-12-25'
+  → Error: Unable to parse date from string: 'The deadline is 2023-12-25'
+
+✓ Fuzzy - date in middle                   | Input: 'On Sep 25 2003 something happened'
+  → 2003-09-24T22:00:00.000Z (0.52ms)
+
+✓ Forward slashes                          | Input: '2003/09/25'
+  → 2003-09-24T22:00:00.000Z (0.01ms)
+  → Dayfirst: 2005-01-08T23:00:00.000Z
+
+✗ Backslashes                              | Input: '2003\09\25'
+  → Error: Unable to parse date from string: '2003\09\25'
+
+✗ Underscores                              | Input: '2003_09_25'
+  → Error: Unable to parse date from string: '2003_09_25'
+
+✓ ISO with UTC timezone                    | Input: '2003-09-25T10:49:41Z'
+  → 2003-09-25T08:49:41.000Z (0.01ms)
+
+✓ ISO with timezone offset                 | Input: '2003-09-25T10:49:41+05:00'
+  → 2003-09-25T05:49:41.000Z (0.02ms)
+
+✓ ISO with negative timezone offset        | Input: '2003-09-25T10:49:41-08:00'
+  → 2003-09-25T18:49:41.000Z (0.01ms)
+
+
+Performance Benchmarks
+--------------------------------------------------------------------------------
+2023-12-25                | Total: 2.28ms | Avg: 0.002ms
+12/25/2023                | Total: 2.21ms | Avg: 0.002ms
+December 25, 2023         | Total: 41.48ms | Avg: 0.041ms
+2023-12-25T10:30:00       | Total: 2.77ms | Avg: 0.003ms
+tomorrow                  | Total: 230.61ms | Avg: 0.231ms
+3 days ago                | Total: 299.25ms | Avg: 0.299ms
+
+Results saved to swift_test_results.json
+
+Summary:
+Total tests: 63
+Successful (default): 51 (81.0%)
+Additional fuzzy successes: 7
