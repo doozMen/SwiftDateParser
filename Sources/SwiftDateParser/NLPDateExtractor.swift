@@ -80,8 +80,11 @@ public struct NLPDateExtractor {
                     if let range = Range(match.range, in: text) {
                         let matchedText = String(text[range])
                         
+                        // Create a fuzzy parser for relative dates
+                        let fuzzyParser = DateParser(parserInfo: DateParser.ParserInfo(fuzzy: true))
+                        
                         // Try to parse the matched text
-                        if let date = try? parser.parse(matchedText) {
+                        if let date = try? fuzzyParser.parse(matchedText) {
                             results.append(ExtractedDate(
                                 date: date,
                                 text: matchedText,

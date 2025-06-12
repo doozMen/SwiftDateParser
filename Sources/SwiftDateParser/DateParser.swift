@@ -58,7 +58,7 @@ public struct DateParser {
         self.parserInfo = parserInfo
         self.calendar = calendar
         self.locale = locale
-        self.dateFormatters = DateParser.createDateFormatters(locale: locale)
+        self.dateFormatters = DateParser.createDateFormatters(locale: locale, calendar: calendar)
     }
     
     /// Parse a date string into a Date object
@@ -88,7 +88,7 @@ public struct DateParser {
     }
     
     /// Parse multiple date formats using DateFormatter
-    private static func createDateFormatters(locale: Locale) -> [DateFormatter] {
+    private static func createDateFormatters(locale: Locale, calendar: Calendar) -> [DateFormatter] {
         let formats = [
             // ISO formats
             "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ",
@@ -132,7 +132,8 @@ public struct DateParser {
             let formatter = DateFormatter()
             formatter.dateFormat = format
             formatter.locale = locale
-            formatter.timeZone = TimeZone.current
+            formatter.calendar = calendar
+            formatter.timeZone = calendar.timeZone
             return formatter
         }
     }

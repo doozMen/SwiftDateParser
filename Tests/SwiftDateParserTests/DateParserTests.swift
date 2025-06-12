@@ -10,7 +10,8 @@ final class DateParserTests: XCTestCase {
         super.setUp()
         calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = TimeZone(identifier: "UTC")!
-        parser = DateParser(calendar: calendar)
+        let locale = Locale(identifier: "en_US_POSIX")
+        parser = DateParser(calendar: calendar, locale: locale)
     }
     
     // MARK: - ISO Format Tests
