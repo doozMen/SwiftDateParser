@@ -1,6 +1,6 @@
 # SwiftDateParser
 
-A powerful and flexible date parsing library for Swift, inspired by Python's dateutil parser. This library provides natural language date parsing, multiple format support, and advanced NLP-based date extraction from text.
+A Swift port of Python's powerful [dateutil](https://github.com/dateutil/dateutil) parser, created with Claude Code. This open-source library brings the flexibility and robustness of Python's date parsing capabilities to the Swift ecosystem, providing natural language date parsing, multiple format support, and advanced NLP-based date extraction from text.
 
 ## Features
 
@@ -11,6 +11,23 @@ A powerful and flexible date parsing library for Swift, inspired by Python's dat
 - ⚡ **High Performance**: Optimized for speed with caching mechanisms
 - 🧪 **Comprehensive Tests**: Extensive test coverage
 - 📱 **Cross-Platform**: Works on macOS, iOS, tvOS, and watchOS
+
+## Python dateutil Compatibility
+
+This Swift port implements the core functionality of Python's dateutil.parser with Swift-native enhancements:
+
+### ✅ Supported Features
+- **parse()** function with fuzzy parsing
+- **dayfirst** and **yearfirst** parameters
+- Relative date parsing (tomorrow, yesterday, etc.)
+- Multiple date format recognition
+- Natural language date extraction (enhanced with Apple's NLP)
+
+### 🚧 Differences from Python
+- Returns Swift `Date` objects instead of Python `datetime`
+- Uses Swift's error handling with `throw`/`try` instead of exceptions
+- Enhanced NLP capabilities using Apple's Natural Language framework
+- No timezone parsing (uses system timezone by default)
 
 ## Installation
 
@@ -220,9 +237,21 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## About This Port
+
+SwiftDateParser is an open-source Swift implementation of Python's [dateutil](https://github.com/dateutil/dateutil) parser, created entirely with Claude Code. This port aims to bring the same powerful and flexible date parsing capabilities that Python developers have enjoyed for years to the Swift community.
+
+### Key Differences from Python's dateutil
+
+- **Native Swift Implementation**: Built from the ground up using Swift's type system and language features
+- **Platform Integration**: Leverages Apple's Natural Language framework for enhanced NLP capabilities
+- **Swift-First API**: Designed to feel natural in Swift with proper error handling and optionals
+- **Performance Optimized**: Takes advantage of Swift's performance characteristics
+
 ## Acknowledgments
 
-- Inspired by Python's [dateutil](https://github.com/dateutil/dateutil) library
+- Based on Python's [dateutil](https://github.com/dateutil/dateutil) library
+- Ported to Swift using Claude Code
 - Uses Swift's native Natural Language framework
 - Built with Swift Package Manager
 

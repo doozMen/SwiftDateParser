@@ -1,21 +1,24 @@
-import XCTest
+import Testing
 @testable import SwiftDateParser
+import Foundation
 
-final class DateParserTests: XCTestCase {
+@Suite("Date Parser Tests")
+struct DateParserTests {
     
-    var parser: DateParser!
-    var calendar: Calendar!
+    let parser: DateParser
+    let calendar: Calendar
     
-    override func setUp() {
-        super.setUp()
-        calendar = Calendar(identifier: .gregorian)
+    init() {
+        var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = TimeZone(identifier: "UTC")!
         let locale = Locale(identifier: "en_US_POSIX")
-        parser = DateParser(calendar: calendar, locale: locale)
+        self.calendar = calendar
+        self.parser = DateParser(calendar: calendar, locale: locale)
     }
     
     // MARK: - ISO Format Tests
     
+    @Test("Parse ISO date formats")
     func testISOFormats() throws {
         let testCases: [(String, (year: Int, month: Int, day: Int, hour: Int?, minute: Int?, second: Int?))] = [
             ("2003-09-25T10:49:41", (2003, 9, 25, 10, 49, 41)),
@@ -32,24 +35,25 @@ final class DateParserTests: XCTestCase {
             let date = try parser.parse(dateString)
             let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
             
-            XCTAssertEqual(components.year, expected.year, "Year mismatch for \(dateString)")
-            XCTAssertEqual(components.month, expected.month, "Month mismatch for \(dateString)")
-            XCTAssertEqual(components.day, expected.day, "Day mismatch for \(dateString)")
+            #expect(components.year == expected.year, "Year mismatch for \(dateString)")
+            #expect(components.month == expected.month, "Month mismatch for \(dateString)")
+            #expect(components.day == expected.day, "Day mismatch for \(dateString)")
             
             if let expectedHour = expected.hour {
-                XCTAssertEqual(components.hour, expectedHour, "Hour mismatch for \(dateString)")
+                #expect(components.hour == expectedHour, "Hour mismatch for \(dateString)")
             }
             if let expectedMinute = expected.minute {
-                XCTAssertEqual(components.minute, expectedMinute, "Minute mismatch for \(dateString)")
+                #expect(components.minute == expectedMinute, "Minute mismatch for \(dateString)")
             }
             if let expectedSecond = expected.second {
-                XCTAssertEqual(components.second, expectedSecond, "Second mismatch for \(dateString)")
+                #expect(components.second == expectedSecond, "Second mismatch for \(dateString)")
             }
         }
     }
     
     // MARK: - Common Format Tests
     
+    @Test("Parse common date formats")
     func testCommonDateFormats() throws {
         let testCases: [(String, (year: Int, month: Int, day: Int))] = [
             ("09-25-2003", (2003, 9, 25)),
@@ -72,14 +76,15 @@ final class DateParserTests: XCTestCase {
             let date = try parser.parse(dateString)
             let components = calendar.dateComponents([.year, .month, .day], from: date)
             
-            XCTAssertEqual(components.year, expected.year, "Year mismatch for \(dateString)")
-            XCTAssertEqual(components.month, expected.month, "Month mismatch for \(dateString)")
-            XCTAssertEqual(components.day, expected.day, "Day mismatch for \(dateString)")
+            #expect(components.year == expected.year, "Year mismatch for \(dateString)")
+            #expect(components.month == expected.month, "Month mismatch for \(dateString)")
+            #expect(components.day == expected.day, "Day mismatch for \(dateString)")
         }
     }
     
     // MARK: - Natural Language Tests
     
+    @Test("Parse natural language dates")
     func testNaturalLanguageDates() throws {
         // Create a fuzzy parser
         let fuzzyParser = DateParser(
@@ -96,12 +101,15 @@ final class DateParserTests: XCTestCase {
         ]
         
         for dateString in monthTests {
-            XCTAssertNoThrow(try fuzzyParser.parse(dateString), "Failed to parse: \(dateString)")
+            #expect(throws: Never.self) {
+                _ = try fuzzyParser.parse(dateString)
+            }
         }
     }
     
     // MARK: - Relative Date Tests
     
+    @Test("Parse relative dates")
     func testRelativeDates() throws {
         let fuzzyParser = DateParser(
             parserInfo: DateParser.ParserInfo(fuzzy: true),
@@ -117,12 +125,13 @@ final class DateParserTests: XCTestCase {
         
         for dateString in relativeTests {
             let date = try fuzzyParser.parse(dateString)
-            XCTAssertNotNil(date, "Failed to parse relative date: \(dateString)")
+            #expect(date != nil, "Failed to parse relative date: \(dateString)")
         }
     }
     
     // MARK: - Relative Dates with Numbers
     
+    @Test("Parse relative dates with numbers")
     func testRelativeDatesWithNumbers() throws {
         let fuzzyParser = DateParser(
             parserInfo: DateParser.ParserInfo(fuzzy: true),
@@ -133,17 +142,18 @@ final class DateParserTests: XCTestCase {
         let daysAgoDate = try fuzzyParser.parse("3 days ago")
         let expectedDaysAgo = calendar.date(byAdding: .day, value: -3, to: Date())!
         let daysDifference = calendar.dateComponents([.day], from: daysAgoDate, to: expectedDaysAgo).day ?? 0
-        XCTAssertLessThanOrEqual(abs(daysDifference), 1, "3 days ago parsing is off by more than 1 day")
+        #expect(abs(daysDifference) <= 1, "3 days ago parsing is off by more than 1 day")
         
         // Test "in X weeks" format
         let weeksFromNowDate = try fuzzyParser.parse("in 2 weeks")
         let expectedWeeksFromNow = calendar.date(byAdding: .weekOfYear, value: 2, to: Date())!
         let weeksDifference = calendar.dateComponents([.day], from: weeksFromNowDate, to: expectedWeeksFromNow).day ?? 0
-        XCTAssertLessThanOrEqual(abs(weeksDifference), 1, "in 2 weeks parsing is off by more than 1 day")
+        #expect(abs(weeksDifference) <= 1, "in 2 weeks parsing is off by more than 1 day")
     }
     
     // MARK: - Time Format Tests
     
+    @Test("Parse time formats")
     func testTimeFormats() throws {
         let testCases: [(String, (hour: Int, minute: Int, second: Int?))] = [
             ("10:36:28", (10, 36, 28)),
@@ -164,17 +174,18 @@ final class DateParserTests: XCTestCase {
             let date = try timeParser.parse(timeString)
             let components = calendar.dateComponents([.hour, .minute, .second], from: date)
             
-            XCTAssertEqual(components.hour, expected.hour, "Hour mismatch for \(timeString)")
-            XCTAssertEqual(components.minute, expected.minute, "Minute mismatch for \(timeString)")
+            #expect(components.hour == expected.hour, "Hour mismatch for \(timeString)")
+            #expect(components.minute == expected.minute, "Minute mismatch for \(timeString)")
             
             if let expectedSecond = expected.second {
-                XCTAssertEqual(components.second, expectedSecond, "Second mismatch for \(timeString)")
+                #expect(components.second == expectedSecond, "Second mismatch for \(timeString)")
             }
         }
     }
     
     // MARK: - Error Tests
     
+    @Test("Handle invalid date strings")
     func testInvalidDateStrings() {
         let invalidDates = [
             "not a date",
@@ -184,14 +195,15 @@ final class DateParserTests: XCTestCase {
         ]
         
         for invalidDate in invalidDates {
-            XCTAssertThrowsError(try parser.parse(invalidDate)) { error in
-                XCTAssertTrue(error is DateParserError, "Expected DateParserError for \(invalidDate)")
+            #expect(throws: DateParserError.self) {
+                _ = try parser.parse(invalidDate)
             }
         }
     }
     
     // MARK: - Custom Format Tests
     
+    @Test("Parse custom date formats")
     func testCustomFormats() throws {
         let fuzzyParser = DateParser(
             parserInfo: DateParser.ParserInfo(fuzzy: true),
@@ -210,9 +222,9 @@ final class DateParserTests: XCTestCase {
             let date = try fuzzyParser.parse(dateString)
             let components = calendar.dateComponents([.year, .month, .day], from: date)
             
-            XCTAssertEqual(components.year, expected.0, "Year mismatch for \(dateString)")
-            XCTAssertEqual(components.month, expected.1, "Month mismatch for \(dateString)")
-            XCTAssertEqual(components.day, expected.2, "Day mismatch for \(dateString)")
+            #expect(components.year == expected.0, "Year mismatch for \(dateString)")
+            #expect(components.month == expected.1, "Month mismatch for \(dateString)")
+            #expect(components.day == expected.2, "Day mismatch for \(dateString)")
         }
     }
 }

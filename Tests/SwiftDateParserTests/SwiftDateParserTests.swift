@@ -1,27 +1,31 @@
-import XCTest
+import Testing
 @testable import SwiftDateParser
+import Foundation
 
-final class SwiftDateParserTests: XCTestCase {
+@Suite("SwiftDateParser API Tests")
+struct SwiftDateParserTests {
     
+    @Test("Convenience parse methods")
     func testConvenienceMethods() throws {
         // Test the convenience parse method
         let date1 = try SwiftDateParser.parse("2023-12-25")
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: date1)
-        XCTAssertEqual(components.year, 2023)
-        XCTAssertEqual(components.month, 12)
-        XCTAssertEqual(components.day, 25)
+        #expect(components.year == 2023)
+        #expect(components.month == 12)
+        #expect(components.day == 25)
         
         // Test relative date parsing
-        let _ = try SwiftDateParser.parse("tomorrow")
-        let _ = try SwiftDateParser.parse("3 days ago")
+        _ = try SwiftDateParser.parse("tomorrow")
+        _ = try SwiftDateParser.parse("3 days ago")
     }
     
+    @Test("Date extraction from text")
     func testDateExtraction() {
         let text = "The meeting is on January 15, 2024 at 3 PM. Please confirm by tomorrow."
         let extracted = SwiftDateParser.extractDates(from: text)
         
-        XCTAssertGreaterThan(extracted.count, 0, "Should extract at least one date")
+        #expect(extracted.count > 0, "Should extract at least one date")
         
         // Print extracted dates for verification
         for date in extracted {
@@ -29,10 +33,12 @@ final class SwiftDateParserTests: XCTestCase {
         }
     }
     
+    @Test("Version string")
     func testVersionString() {
-        XCTAssertEqual(SwiftDateParser.version, "1.0.0")
+        #expect(SwiftDateParser.version == "1.0.0")
     }
     
+    @Test("Create parser factory")
     func testCreateParser() {
         let parser = SwiftDateParser.createParser(
             dayfirst: true,
@@ -40,14 +46,16 @@ final class SwiftDateParserTests: XCTestCase {
             fuzzy: true
         )
         
-        XCTAssertNotNil(parser, "Should create a parser instance")
+        #expect(parser != nil, "Should create a parser instance")
     }
     
+    @Test("Create extractor factory")
     func testCreateExtractor() {
         let extractor = SwiftDateParser.createExtractor()
-        XCTAssertNotNil(extractor, "Should create an extractor instance")
+        #expect(extractor != nil, "Should create an extractor instance")
     }
     
+    @Test("Integration example with email parsing")
     func testIntegrationExample() throws {
         // Example of using the library for a real-world scenario
         let emailText = """
@@ -70,6 +78,6 @@ final class SwiftDateParserTests: XCTestCase {
             print("- '\(extractedDate.text)' (confidence: \(extractedDate.confidence))")
         }
         
-        XCTAssertGreaterThan(dates.count, 2, "Should find multiple dates in the email")
+        #expect(dates.count > 2, "Should find multiple dates in the email")
     }
 }
