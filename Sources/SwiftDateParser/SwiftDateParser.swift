@@ -18,25 +18,37 @@ public struct SwiftDateParser {
     /// The current version of SwiftDateParser
     public static let version = "1.0.0"
     
-    /// Create a default DateParser instance
+    /// Create a default DateParser instance (uses optimized DateParser2)
     public static func createParser(
         dayfirst: Bool = false,
         yearfirst: Bool = false,
         fuzzy: Bool = true,
-        defaultDate: Date = Date()
-    ) -> DateParser {
-        let parserInfo = DateParser.ParserInfo(
+        defaultDate: Date = Date(),
+        validateDates: Bool = false,
+        ignoretz: Bool = false,
+        tzinfos: [String: TimeZone]? = nil
+    ) -> DateParser2 {
+        let parserInfo = DateParser2.ParserInfo(
             dayfirst: dayfirst,
             yearfirst: yearfirst,
             fuzzy: fuzzy,
-            defaultDate: defaultDate
+            fuzzyWithTokens: false,
+            validateDates: validateDates,
+            defaultDate: defaultDate,
+            ignoretz: ignoretz,
+            tzinfos: tzinfos
         )
-        return DateParser(parserInfo: parserInfo)
+        return DateParser2(parserInfo: parserInfo)
     }
     
     /// Create an NLP date extractor
-    public static func createExtractor(parser: DateParser? = nil) -> NLPDateExtractor {
-        return NLPDateExtractor(parser: parser ?? createParser())
+    public static func createExtractor(parser: DateParser2? = nil) -> NLPDateExtractor2 {
+        return NLPDateExtractor2(parser: parser ?? createParser())
+    }
+    
+    /// Create an NLP date extractor with the old parser (for compatibility)
+    public static func createExtractorLegacy(parser: DateParser? = nil) -> NLPDateExtractor {
+        return NLPDateExtractor(parser: parser ?? DateParser())
     }
     
     /// Convenience method to parse a date string
@@ -46,8 +58,14 @@ public struct SwiftDateParser {
     }
     
     /// Convenience method to extract dates from text
-    public static func extractDates(from text: String) -> [NLPDateExtractor.ExtractedDate] {
+    public static func extractDates(from text: String) -> [NLPDateExtractor2.ExtractedDate] {
         let extractor = createExtractor()
         return extractor.extractDates(from: text)
+    }
+    
+    /// Parse with tokens - returns date and skipped tokens
+    public static func parseWithTokens(_ dateString: String, fuzzy: Bool = true) throws -> DateParser2.ParseResultWithTokens {
+        let parser = createParser(fuzzy: fuzzy, validateDates: false)
+        return try parser.parseWithTokens(dateString)
     }
 }

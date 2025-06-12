@@ -99,14 +99,15 @@ let testScenarios: [TestScenario] = [
     TestScenario(input: "2003-09-25T10:49:41-08:00", description: "ISO with negative timezone offset"),
 ]
 
-func parseWithSwiftDateParser(_ dateString: String, fuzzy: Bool = false, dayfirst: Bool = false, yearfirst: Bool = false) -> ParseResult {
+func parseWithSwiftDateParser(_ dateString: String, fuzzy: Bool = false, dayfirst: Bool = false, yearfirst: Bool = false, validateDates: Bool = false) -> ParseResult {
     let startTime = Date()
     
     do {
         let parser = SwiftDateParser.createParser(
             dayfirst: dayfirst,
             yearfirst: yearfirst,
-            fuzzy: fuzzy
+            fuzzy: fuzzy,
+            validateDates: validateDates
         )
         let date = try parser.parse(dateString)
         let endTime = Date()
@@ -152,10 +153,19 @@ func runSwiftTests() -> [TestResult] {
             dayfirstResult = parseWithSwiftDateParser(scenario.input, dayfirst: true)
         }
         
+        // Test with validation for dates that should fail
+        var validationResult: ParseResult? = nil
+        if scenario.description.contains("Invalid date") {
+            validationResult = parseWithSwiftDateParser(scenario.input, validateDates: true)
+        }
+        
+        // For invalid dates, use validation result as default if enabled
+        let finalDefaultResult = (scenario.description.contains("Invalid date") && validationResult != nil) ? validationResult! : defaultResult
+        
         let testResult = TestResult(
             input: scenario.input,
             description: scenario.description,
-            default: defaultResult,
+            default: finalDefaultResult,
             fuzzy: fuzzyResult,
             dayfirst: dayfirstResult
         )
@@ -163,12 +173,12 @@ func runSwiftTests() -> [TestResult] {
         results.append(testResult)
         
         // Print summary
-        let status = defaultResult.success ? "✓" : "✗"
+        let status = finalDefaultResult.success ? "✓" : "✗"
         print("\(status) \(scenario.description.padding(toLength: 40, withPad: " ", startingAt: 0)) | Input: '\(scenario.input)'")
-        if defaultResult.success {
-            print("  → \(defaultResult.date!) (\(String(format: "%.2f", defaultResult.timeMs))ms)")
+        if finalDefaultResult.success {
+            print("  → \(finalDefaultResult.date!) (\(String(format: "%.2f", finalDefaultResult.timeMs))ms)")
         } else {
-            print("  → Error: \(defaultResult.error!)")
+            print("  → Error: \(finalDefaultResult.error!)")
         }
         
         if let fuzzy = fuzzyResult, fuzzy.success {
