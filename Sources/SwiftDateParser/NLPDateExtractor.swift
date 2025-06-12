@@ -56,10 +56,56 @@ public struct NLPDateExtractor {
     private func extractCustomDatePatterns(from text: String) -> [ExtractedDate] {
         var results: [ExtractedDate] = []
         
+        // Specific check for exact relative terms
+        let simpleRelativeTerms = ["today", "tomorrow", "yesterday"]
+        for term in simpleRelativeTerms {
+            // Case-insensitive search for the word using word boundaries
+            if let regex = try? NSRegularExpression(pattern: "\\b\(term)\\b", options: .caseInsensitive) {
+                let matches = regex.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
+                
+                for match in matches {
+                    if let range = Range(match.range, in: text) {
+                        // Create a fuzzy parser for relative dates
+                        let fuzzyParser = DateParser(parserInfo: DateParser.ParserInfo(fuzzy: true))
+                        
+                        if let date = try? fuzzyParser.parse(term) {
+                            results.append(ExtractedDate(
+                                date: date,
+                                text: term,
+                                range: range,
+                                confidence: 0.98
+                            ))
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Add direct checks for common relative terms
+        let simpleRelatives = ["today", "tomorrow", "yesterday", "next week", "last week", "next month", "last month"]
+        for term in simpleRelatives {
+            if text.lowercased().contains(term) {
+                // Create a fuzzy parser for relative dates
+                let fuzzyParser = DateParser(parserInfo: DateParser.ParserInfo(fuzzy: true))
+                
+                // Find the range of the term in the text
+                if let range = text.lowercased().range(of: term) {
+                    if let date = try? fuzzyParser.parse(term) {
+                        results.append(ExtractedDate(
+                            date: date,
+                            text: term,
+                            range: range,
+                            confidence: 0.9
+                        ))
+                    }
+                }
+            }
+        }
+        
         // Relative date patterns
         let relativePatterns = [
-            // Simple relative dates
-            (pattern: #"\b(today|tomorrow|yesterday)\b"#, confidence: 0.95),
+            // Simple relative dates (also matches with surrounding context)
+            (pattern: #"\b(today|tomorrow|yesterday)(\s+[a-zA-Z]+)?\b"#, confidence: 0.95),
             // Relative with numbers
             (pattern: #"\b(\d+)\s+(day|week|month|year)s?\s+(ago|from now)\b"#, confidence: 0.85),
             // "in X time" format
@@ -78,19 +124,38 @@ public struct NLPDateExtractor {
                 
                 for match in matches {
                     if let range = Range(match.range, in: text) {
-                        let matchedText = String(text[range])
+                        let fullMatchedText = String(text[range])
+                        
+                        // For patterns containing simple relative terms, extract just the term
+                        var matchedText = fullMatchedText
+                        for term in simpleRelativeTerms {
+                            if fullMatchedText.lowercased().hasPrefix(term.lowercased()) {
+                                matchedText = term
+                                break
+                            }
+                        }
                         
                         // Create a fuzzy parser for relative dates
                         let fuzzyParser = DateParser(parserInfo: DateParser.ParserInfo(fuzzy: true))
                         
                         // Try to parse the matched text
                         if let date = try? fuzzyParser.parse(matchedText) {
-                            results.append(ExtractedDate(
-                                date: date,
-                                text: matchedText,
-                                range: range,
-                                confidence: confidence
-                            ))
+                            // Don't add duplicates - check if we've already added this exact text
+                            let isDuplicate = results.contains { existing in
+                                existing.text == fullMatchedText || 
+                                existing.range == range || 
+                                (existing.text.lowercased().contains(matchedText.lowercased()) && 
+                                 range.overlaps(existing.range))
+                            }
+                            
+                            if !isDuplicate {
+                                results.append(ExtractedDate(
+                                    date: date,
+                                    text: fullMatchedText,
+                                    range: range,
+                                    confidence: confidence
+                                ))
+                            }
                         }
                     }
                 }

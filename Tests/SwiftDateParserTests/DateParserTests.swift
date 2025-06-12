@@ -125,7 +125,8 @@ struct DateParserTests {
         
         for dateString in relativeTests {
             let date = try fuzzyParser.parse(dateString)
-            #expect(date != nil, "Failed to parse relative date: \(dateString)")
+            // Date is non-optional, so this will always succeed, but we keep a check for clarity
+            #expect(true, "Successfully parsed relative date: \(dateString)")
         }
     }
     

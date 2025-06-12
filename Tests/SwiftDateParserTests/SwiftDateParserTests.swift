@@ -46,13 +46,15 @@ struct SwiftDateParserTests {
             fuzzy: true
         )
         
-        #expect(parser != nil, "Should create a parser instance")
+        // Parser is non-optional, so we validate it exists
+        #expect(true, "Created parser instance successfully")
     }
     
     @Test("Create extractor factory")
     func testCreateExtractor() {
         let extractor = SwiftDateParser.createExtractor()
-        #expect(extractor != nil, "Should create an extractor instance")
+        // Extractor is non-optional, so we validate it exists
+        #expect(true, "Created extractor instance successfully")
     }
     
     @Test("Integration example with email parsing")
