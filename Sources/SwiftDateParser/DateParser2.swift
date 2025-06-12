@@ -704,9 +704,218 @@ public struct DateParser2 {
             }
         }
         
+        // Handle apostrophe years ('96)
+        if let date = parseApostropheYear(text) {
+            return ParseResultWithTokens(date: date, skippedTokens: [])
+        }
+        
+        // Handle AD/BC dates
+        if let date = parseADBCDates(text) {
+            return ParseResultWithTokens(date: date, skippedTokens: [])
+        }
+        
         // Handle ordinal dates
         if let date = parseOrdinalDates(text) {
             return ParseResultWithTokens(date: date, skippedTokens: [])
+        }
+        
+        return nil
+    }
+    
+    /// Parse dates with apostrophe years like "Wed, July 10, '96"
+    private func parseApostropheYear(_ text: String) -> Date? {
+        // Patterns for apostrophe years
+        let patterns = [
+            // "Wed, July 10, '96" or "July 10, '96"
+            #"(?:(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|wed|thu|fri|sat|sun),?\s+)?(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)\s+(\d{1,2}),?\s*'(\d{2})"#,
+            // "'96-07-10" format
+            #"'(\d{2})-(\d{1,2})-(\d{1,2})"#,
+            // "10-Jul-'96" format
+            #"(\d{1,2})-(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)-'(\d{2})"#
+        ]
+        
+        // Try first pattern
+        if let regex = try? NSRegularExpression(pattern: patterns[0], options: .caseInsensitive),
+           let match = regex.firstMatch(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count)) {
+            
+            if let monthRange = Range(match.range(at: 1), in: text),
+               let dayRange = Range(match.range(at: 2), in: text),
+               let yearRange = Range(match.range(at: 3), in: text),
+               let day = Int(text[dayRange]),
+               let yearTwoDigit = Int(text[yearRange]) {
+                
+                let monthText = text[monthRange].lowercased()
+                if let month = Self.monthNames[monthText] {
+                    let year = convertTwoDigitYear(yearTwoDigit)
+                    
+                    if !parserInfo.validateDates || isValidDate(year: year, month: month, day: day) {
+                        var components = DateComponents()
+                        components.year = year
+                        components.month = month
+                        components.day = day
+                        components.calendar = calendar
+                        components.timeZone = calendar.timeZone
+                        return calendar.date(from: components)
+                    }
+                }
+            }
+        }
+        
+        // Try second pattern ('YY-MM-DD)
+        if let regex = try? NSRegularExpression(pattern: patterns[1], options: .caseInsensitive),
+           let match = regex.firstMatch(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count)),
+           let yearRange = Range(match.range(at: 1), in: text),
+           let monthRange = Range(match.range(at: 2), in: text),
+           let dayRange = Range(match.range(at: 3), in: text),
+           let yearTwoDigit = Int(text[yearRange]),
+           let month = Int(text[monthRange]),
+           let day = Int(text[dayRange]) {
+            
+            let year = convertTwoDigitYear(yearTwoDigit)
+            
+            if !parserInfo.validateDates || isValidDate(year: year, month: month, day: day) {
+                var components = DateComponents()
+                components.year = year
+                components.month = month
+                components.day = day
+                components.calendar = calendar
+                components.timeZone = calendar.timeZone
+                return calendar.date(from: components)
+            }
+        }
+        
+        // Try third pattern (DD-Mon-'YY)
+        if let regex = try? NSRegularExpression(pattern: patterns[2], options: .caseInsensitive),
+           let match = regex.firstMatch(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count)),
+           let dayRange = Range(match.range(at: 1), in: text),
+           let monthRange = Range(match.range(at: 2), in: text),
+           let yearRange = Range(match.range(at: 3), in: text),
+           let day = Int(text[dayRange]),
+           let yearTwoDigit = Int(text[yearRange]) {
+            
+            let monthText = text[monthRange].lowercased()
+            if let month = Self.monthNames[monthText] {
+                let year = convertTwoDigitYear(yearTwoDigit)
+                
+                if !parserInfo.validateDates || isValidDate(year: year, month: month, day: day) {
+                    var components = DateComponents()
+                    components.year = year
+                    components.month = month
+                    components.day = day
+                    components.calendar = calendar
+                    components.timeZone = calendar.timeZone
+                    return calendar.date(from: components)
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    /// Parse dates with AD/BC markers
+    private func parseADBCDates(_ text: String) -> Date? {
+        // Pattern for AD/BC dates
+        let pattern = #"(\d{1,4})(?:\.(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)\.(\d{1,2}))?\s*(?:AD|A\.D\.|CE|C\.E\.|BC|B\.C\.|BCE|B\.C\.E\.)"#
+        
+        // Also handle time if present
+        let patternWithTime = #"(\d{1,4})(?:\.(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)\.(\d{1,2}))?\s*(?:AD|A\.D\.|CE|C\.E\.|BC|B\.C\.|BCE|B\.C\.E\.)\s*(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(?:AM|PM|am|pm)?"#
+        
+        // Try pattern with time first
+        if let regex = try? NSRegularExpression(pattern: patternWithTime, options: .caseInsensitive),
+           let match = regex.firstMatch(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count)) {
+            
+            let yearRange = Range(match.range(at: 1), in: text)!
+            var year = Int(text[yearRange])!
+            
+            // Check if BC/BCE
+            let isBCPattern = #"(?:BC|B\.C\.|BCE|B\.C\.E\.)"#
+            if let bcRegex = try? NSRegularExpression(pattern: isBCPattern, options: .caseInsensitive),
+               bcRegex.firstMatch(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count)) != nil {
+                year = -year + 1  // BC years: 1 BC = year 0, 2 BC = year -1, etc.
+            }
+            
+            var components = DateComponents()
+            components.year = year
+            components.calendar = calendar
+            components.timeZone = calendar.timeZone
+            
+            // Extract month if present
+            if match.range(at: 2).location != NSNotFound,
+               let monthRange = Range(match.range(at: 2), in: text) {
+                let monthText = text[monthRange].lowercased()
+                components.month = Self.monthNames[monthText]
+            } else {
+                components.month = 1  // Default to January
+            }
+            
+            // Extract day if present
+            if match.range(at: 3).location != NSNotFound,
+               let dayRange = Range(match.range(at: 3), in: text),
+               let day = Int(text[dayRange]) {
+                components.day = day
+            } else {
+                components.day = 1  // Default to 1st
+            }
+            
+            // Extract time if present
+            if match.range(at: 4).location != NSNotFound,
+               let hourRange = Range(match.range(at: 4), in: text),
+               let hour = Int(text[hourRange]) {
+                components.hour = hour
+                
+                if match.range(at: 5).location != NSNotFound,
+                   let minuteRange = Range(match.range(at: 5), in: text),
+                   let minute = Int(text[minuteRange]) {
+                    components.minute = minute
+                }
+                
+                if match.range(at: 6).location != NSNotFound,
+                   let secondRange = Range(match.range(at: 6), in: text),
+                   let second = Int(text[secondRange]) {
+                    components.second = second
+                }
+            }
+            
+            return calendar.date(from: components)
+        }
+        
+        // Try simpler pattern without time
+        if let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive),
+           let match = regex.firstMatch(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count)),
+           let yearRange = Range(match.range(at: 1), in: text),
+           var year = Int(text[yearRange]) {
+            
+            // Check if BC/BCE
+            let isBCPattern = #"(?:BC|B\.C\.|BCE|B\.C\.E\.)"#
+            if let bcRegex = try? NSRegularExpression(pattern: isBCPattern, options: .caseInsensitive),
+               bcRegex.firstMatch(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count)) != nil {
+                year = -year + 1  // BC years: 1 BC = year 0, 2 BC = year -1, etc.
+            }
+            
+            var components = DateComponents()
+            components.year = year
+            components.calendar = calendar
+            components.timeZone = calendar.timeZone
+            
+            // Extract month if present
+            if match.range(at: 2).location != NSNotFound,
+               let monthRange = Range(match.range(at: 2), in: text) {
+                let monthText = text[monthRange].lowercased()
+                components.month = Self.monthNames[monthText]
+            } else {
+                components.month = 1  // Default to January
+            }
+            
+            // Extract day if present
+            if match.range(at: 3).location != NSNotFound,
+               let dayRange = Range(match.range(at: 3), in: text),
+               let day = Int(text[dayRange]) {
+                components.day = day
+            } else {
+                components.day = 1  // Default to 1st
+            }
+            
+            return calendar.date(from: components)
         }
         
         return nil

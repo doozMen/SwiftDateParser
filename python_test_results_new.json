@@ -1,0 +1,228 @@
+Python dateutil Test Suite
+================================================================================
+Python version: 3.13.3 (main, Apr  8 2025, 13:54:08) [Clang 17.0.0 (clang-1700.0.13.3)]
+dateutil version: Unknown
+================================================================================
+
+Running Python dateutil tests...
+--------------------------------------------------------------------------------
+✓ ISO datetime with T separator            | Input: '2003-09-25T10:49:41'
+  → 2003-09-25T10:49:41 (0.14ms)
+
+✓ ISO datetime with space separator        | Input: '2003-09-25 10:49:41'
+  → 2003-09-25T10:49:41 (0.03ms)
+
+✓ ISO date only                            | Input: '2003-09-25'
+  → 2003-09-25T00:00:00 (0.02ms)
+
+✓ Compact ISO datetime                     | Input: '20030925T104941'
+  → 2003-09-25T10:49:41 (0.02ms)
+
+✓ Compact ISO date                         | Input: '20030925'
+  → 2003-09-25T00:00:00 (0.01ms)
+
+✓ US format MM/DD/YYYY                     | Input: '09/25/2003'
+  → 2003-09-25T00:00:00 (0.01ms)
+
+✓ EU format DD/MM/YYYY                     | Input: '25/09/2003'
+  → 2003-09-25T00:00:00 (0.01ms)
+
+✓ US format with dashes                    | Input: '09-25-2003'
+  → 2003-09-25T00:00:00 (0.01ms)
+
+✓ EU format with dashes                    | Input: '25-09-2003'
+  → 2003-09-25T00:00:00 (0.01ms)
+
+✓ US format with dots                      | Input: '09.25.2003'
+  → 2003-09-25T00:00:00 (0.02ms)
+
+✓ EU format with dots                      | Input: '25.09.2003'
+  → 2003-09-25T00:00:00 (0.01ms)
+
+✓ Year first with slashes                  | Input: '2003/09/25'
+  → 2003-09-25T00:00:00 (0.01ms)
+
+✓ Short date - ambiguous                   | Input: '10/09/03'
+  → 2003-10-09T00:00:00 (0.01ms)
+  → Dayfirst: 2003-09-10T00:00:00
+
+✓ Short date with dashes                   | Input: '10-09-03'
+  → 2003-10-09T00:00:00 (0.01ms)
+  → Dayfirst: 2003-09-10T00:00:00
+
+✓ Short date with dots                     | Input: '10.09.03'
+  → 2003-10-09T00:00:00 (0.01ms)
+  → Dayfirst: 2003-09-10T00:00:00
+
+✓ Month abbreviation                       | Input: 'Sep 25 2003'
+  → 2003-09-25T00:00:00 (0.03ms)
+
+✓ Full month name with comma               | Input: 'September 25, 2003'
+  → 2003-09-25T00:00:00 (0.03ms)
+
+✓ Day first with month name                | Input: '25 Sep 2003'
+  → 2003-09-25T00:00:00 (0.02ms)
+
+✓ Ordinal date                             | Input: '3rd of May 2001'
+  → 2001-05-03T00:00:00 (0.02ms)
+
+✓ Ordinal date US style                    | Input: 'May 3rd, 2001'
+  → 2001-05-03T00:00:00 (0.02ms)
+
+✓ Time only HH:MM:SS                       | Input: '10:36:28'
+  → 2025-06-13T10:36:28 (0.02ms)
+
+✓ Time only HH:MM                          | Input: '10:36'
+  → 2025-06-13T10:36:00 (0.01ms)
+
+✓ Time with PM                             | Input: '10:36:28 PM'
+  → 2025-06-13T22:36:28 (0.02ms)
+
+✓ Time with AM                             | Input: '10:36:28 AM'
+  → 2025-06-13T10:36:28 (0.02ms)
+
+✓ 24-hour time                             | Input: '22:36:28'
+  → 2025-06-13T22:36:28 (0.01ms)
+
+✓ Unix date format                         | Input: 'Thu Sep 25 10:36:28 2003'
+  → 2003-09-25T10:36:28 (0.03ms)
+
+✓ Abbreviated year with apostrophe         | Input: 'Wed, July 10, '96'
+  → 1996-07-10T00:00:00 (0.03ms)
+
+✓ Complex format with AD                   | Input: '1996.July.10 AD 12:08 PM'
+  → 1996-07-10T12:08:00 (0.03ms)
+
+✓ Logger format with milliseconds          | Input: '2003-09-25 10:49:41,502'
+  → 2003-09-25T10:49:41.502000 (0.03ms)
+
+✓ Apostrophe year without day name         | Input: 'July 10, '96'
+  → 1996-07-10T00:00:00 (0.02ms)
+
+✓ Apostrophe year ISO style                | Input: ''96-07-10'
+  → 1996-07-10T00:00:00 (0.01ms)
+  → Dayfirst: 1996-10-07T00:00:00
+
+✗ Apostrophe year with month abbreviation  | Input: '10-Jul-'96'
+  → Error: Unknown string format: 10-Jul-'96
+
+✓ Apostrophe year end of string            | Input: 'December 25 '99'
+  → 1999-12-25T00:00:00 (0.02ms)
+
+✗ BC year only                             | Input: '753 BC'
+  → Error: Unknown string format: 753 BC
+  → Fuzzy: 0753-06-13T00:00:00
+
+✗ CE year                                  | Input: '2023 CE'
+  → Error: Unknown string format: 2023 CE
+  → Fuzzy: 2023-06-13T00:00:00
+
+✓ Year 1 AD                                | Input: '1 AD'
+  → 2025-06-01T00:00:00 (0.01ms)
+
+✗ Date with BC                             | Input: 'December 31, 1 BC'
+  → Error: Unknown string format: December 31, 1 BC
+  → Fuzzy: 2001-12-31T00:00:00
+
+✓ AD date without time                     | Input: '1996.July.10 AD'
+  → 1996-07-10T00:00:00 (0.02ms)
+
+✗ Julius Caesar's death year               | Input: '44 BC'
+  → Error: Unknown string format: 44 BC
+  → Fuzzy: 2044-06-13T00:00:00
+
+✗ Relative - today                         | Input: 'today'
+  → Error: Unknown string format: today
+
+✗ Relative - tomorrow                      | Input: 'tomorrow'
+  → Error: Unknown string format: tomorrow
+
+✗ Relative - yesterday                     | Input: 'yesterday'
+  → Error: Unknown string format: yesterday
+
+✗ Relative - days ago                      | Input: '3 days ago'
+  → Error: Unknown string format: 3 days ago
+  → Fuzzy: 2025-06-03T00:00:00
+
+✗ Relative - in weeks                      | Input: 'in 2 weeks'
+  → Error: Unknown string format: in 2 weeks
+  → Fuzzy: 2025-06-02T00:00:00
+
+✗ Relative - next month                    | Input: 'next month'
+  → Error: Unknown string format: next month
+
+✗ Relative - last year                     | Input: 'last year'
+  → Error: Unknown string format: last year
+
+✗ Empty string                             | Input: ''
+  → Error: String does not contain a date: 
+
+✗ Invalid text                             | Input: 'not a date'
+  → Error: Unknown string format: not a date
+
+✗ Invalid date - not leap year             | Input: '2003-02-29'
+  → Error: day is out of range for month: 2003-02-29
+
+✓ Valid leap year date                     | Input: '2004-02-29'
+  → 2004-02-29T00:00:00 (0.01ms)
+
+✗ Invalid date - September has 30 days     | Input: '2003-09-31'
+  → Error: day is out of range for month: 2003-09-31
+
+✓ Two digit number                         | Input: '99'
+  → 1999-06-13T00:00:00 (0.01ms)
+
+✓ Two digit number                         | Input: '10'
+  → 2025-06-10T00:00:00 (0.01ms)
+
+✓ Year only                                | Input: '2003'
+  → 2003-06-13T00:00:00 (0.01ms)
+
+✗ Fuzzy - date in sentence                 | Input: 'Today is January 1, 2047 at 8:21:00AM'
+  → Error: Unknown string format: Today is January 1, 2047 at 8:21:00AM
+  → Fuzzy: 2047-01-01T08:21:00
+
+✗ Fuzzy - date at end                      | Input: 'The deadline is 2023-12-25'
+  → Error: Unknown string format: The deadline is 2023-12-25
+  → Fuzzy: 2023-12-25T00:00:00
+
+✗ Fuzzy - date in middle                   | Input: 'On Sep 25 2003 something happened'
+  → Error: Unknown string format: On Sep 25 2003 something happened
+  → Fuzzy: 2003-09-25T00:00:00
+
+✓ Forward slashes                          | Input: '2003/09/25'
+  → 2003-09-25T00:00:00 (0.01ms)
+
+✗ Backslashes                              | Input: '2003\09\25'
+  → Error: Unknown string format: 2003\09\25
+  → Fuzzy: 2025-09-25T00:00:00
+
+✗ Underscores                              | Input: '2003_09_25'
+  → Error: Unknown string format: 2003_09_25
+  → Fuzzy: 2025-09-25T00:00:00
+
+✓ ISO with UTC timezone                    | Input: '2003-09-25T10:49:41Z'
+  → 2003-09-25T10:49:41+00:00 (0.03ms)
+
+✓ ISO with timezone offset                 | Input: '2003-09-25T10:49:41+05:00'
+  → 2003-09-25T10:49:41+05:00 (0.04ms)
+
+✓ ISO with negative timezone offset        | Input: '2003-09-25T10:49:41-08:00'
+  → 2003-09-25T10:49:41-08:00 (0.03ms)
+
+
+Performance Benchmarks
+--------------------------------------------------------------------------------
+2023-12-25                | Total: 11.09ms | Avg: 0.011ms
+12/25/2023                | Total: 11.18ms | Avg: 0.011ms
+December 25, 2023         | Total: 18.54ms | Avg: 0.019ms
+2023-12-25T10:30:00       | Total: 18.15ms | Avg: 0.018ms
+tomorrow                  | Total: 5.77ms | Avg: 0.006ms
+3 days ago                | Total: 9.35ms | Avg: 0.009ms
+
+Results saved to python_test_results.json
+
+Summary:
+Total tests: 63
+Successful (default): 42 (66.7%)
+Additional fuzzy successes: 11

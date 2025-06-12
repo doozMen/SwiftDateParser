@@ -54,6 +54,20 @@ TEST_SCENARIOS = [
     ("1996.July.10 AD 12:08 PM", "Complex format with AD"),
     ("2003-09-25 10:49:41,502", "Logger format with milliseconds"),
     
+    # Apostrophe Year Formats
+    ("July 10, '96", "Apostrophe year without day name"),
+    ("'96-07-10", "Apostrophe year ISO style"),
+    ("10-Jul-'96", "Apostrophe year with month abbreviation"),
+    ("December 25 '99", "Apostrophe year end of string"),
+    
+    # AD/BC Formats
+    ("753 BC", "BC year only"),
+    ("2023 CE", "CE year"),
+    ("1 AD", "Year 1 AD"),
+    ("December 31, 1 BC", "Date with BC"),
+    ("1996.July.10 AD", "AD date without time"),
+    ("44 BC", "Julius Caesar's death year"),
+    
     # Relative Dates
     ("today", "Relative - today"),
     ("tomorrow", "Relative - tomorrow"),

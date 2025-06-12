@@ -12,7 +12,7 @@
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T10:49:41",
-      "time_ms": 0.03933906555175781,
+      "time_ms": 0.036716461181640625,
       "error": null
     }
   },
@@ -22,14 +22,14 @@
     "default": {
       "success": true,
       "date": "2003-09-25T10:49:41",
-      "time_ms": 0.030994415283203125,
+      "time_ms": 0.027179718017578125,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T10:49:41",
-      "time_ms": 0.024080276489257812,
+      "time_ms": 0.02193450927734375,
       "error": null
     }
   },
@@ -39,14 +39,14 @@
     "default": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.0171661376953125,
+      "time_ms": 0.019073486328125,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.013828277587890625,
+      "time_ms": 0.014066696166992188,
       "error": null
     }
   },
@@ -56,7 +56,7 @@
     "default": {
       "success": true,
       "date": "2003-09-25T10:49:41",
-      "time_ms": 0.0209808349609375,
+      "time_ms": 0.018835067749023438,
       "error": null
     },
     "fuzzy": null,
@@ -68,7 +68,7 @@
     "default": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.011920928955078125,
+      "time_ms": 0.010967254638671875,
       "error": null
     },
     "fuzzy": null,
@@ -80,14 +80,14 @@
     "default": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.015020370483398438,
+      "time_ms": 0.013828277587890625,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.014066696166992188,
+      "time_ms": 0.013113021850585938,
       "error": null
     }
   },
@@ -97,14 +97,14 @@
     "default": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.013113021850585938,
+      "time_ms": 0.012159347534179688,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.014066696166992188,
+      "time_ms": 0.013113021850585938,
       "error": null
     }
   },
@@ -114,14 +114,14 @@
     "default": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.015020370483398438,
+      "time_ms": 0.013113021850585938,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.014066696166992188,
+      "time_ms": 0.013113021850585938,
       "error": null
     }
   },
@@ -131,58 +131,7 @@
     "default": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.013113021850585938,
-      "error": null
-    },
-    "fuzzy": null,
-    "dayfirst": {
-      "success": true,
-      "date": "2003-09-25T00:00:00",
       "time_ms": 0.011920928955078125,
-      "error": null
-    }
-  },
-  {
-    "input": "09.25.2003",
-    "description": "US format with dots",
-    "default": {
-      "success": true,
-      "date": "2003-09-25T00:00:00",
-      "time_ms": 0.02002716064453125,
-      "error": null
-    },
-    "fuzzy": null,
-    "dayfirst": {
-      "success": true,
-      "date": "2003-09-25T00:00:00",
-      "time_ms": 0.013828277587890625,
-      "error": null
-    }
-  },
-  {
-    "input": "25.09.2003",
-    "description": "EU format with dots",
-    "default": {
-      "success": true,
-      "date": "2003-09-25T00:00:00",
-      "time_ms": 0.015974044799804688,
-      "error": null
-    },
-    "fuzzy": null,
-    "dayfirst": {
-      "success": true,
-      "date": "2003-09-25T00:00:00",
-      "time_ms": 0.0152587890625,
-      "error": null
-    }
-  },
-  {
-    "input": "2003/09/25",
-    "description": "Year first with slashes",
-    "default": {
-      "success": true,
-      "date": "2003-09-25T00:00:00",
-      "time_ms": 0.012874603271484375,
       "error": null
     },
     "fuzzy": null,
@@ -194,19 +143,70 @@
     }
   },
   {
+    "input": "09.25.2003",
+    "description": "US format with dots",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.017881393432617188,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.013113021850585938,
+      "error": null
+    }
+  },
+  {
+    "input": "25.09.2003",
+    "description": "EU format with dots",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.014781951904296875,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.012874603271484375,
+      "error": null
+    }
+  },
+  {
+    "input": "2003/09/25",
+    "description": "Year first with slashes",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.012159347534179688,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.011920928955078125,
+      "error": null
+    }
+  },
+  {
     "input": "10/09/03",
     "description": "Short date - ambiguous",
     "default": {
       "success": true,
       "date": "2003-10-09T00:00:00",
-      "time_ms": 0.01430511474609375,
+      "time_ms": 0.014066696166992188,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-10T00:00:00",
-      "time_ms": 0.012874603271484375,
+      "time_ms": 0.013113021850585938,
       "error": null
     }
   },
@@ -233,14 +233,14 @@
     "default": {
       "success": true,
       "date": "2003-10-09T00:00:00",
-      "time_ms": 0.014066696166992188,
+      "time_ms": 0.013828277587890625,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-10T00:00:00",
-      "time_ms": 0.013113021850585938,
+      "time_ms": 0.012159347534179688,
       "error": null
     }
   },
@@ -262,7 +262,7 @@
     "default": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.03266334533691406,
+      "time_ms": 0.027894973754882812,
       "error": null
     },
     "fuzzy": null,
@@ -274,7 +274,7 @@
     "default": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.023126602172851562,
+      "time_ms": 0.02002716064453125,
       "error": null
     },
     "fuzzy": null,
@@ -286,7 +286,7 @@
     "default": {
       "success": true,
       "date": "2001-05-03T00:00:00",
-      "time_ms": 0.03886222839355469,
+      "time_ms": 0.024080276489257812,
       "error": null
     },
     "fuzzy": null,
@@ -298,7 +298,7 @@
     "default": {
       "success": true,
       "date": "2001-05-03T00:00:00",
-      "time_ms": 0.027894973754882812,
+      "time_ms": 0.02193450927734375,
       "error": null
     },
     "fuzzy": null,
@@ -309,8 +309,8 @@
     "description": "Time only HH:MM:SS",
     "default": {
       "success": true,
-      "date": "2025-06-12T10:36:28",
-      "time_ms": 0.0782012939453125,
+      "date": "2025-06-13T10:36:28",
+      "time_ms": 0.0171661376953125,
       "error": null
     },
     "fuzzy": null,
@@ -321,8 +321,8 @@
     "description": "Time only HH:MM",
     "default": {
       "success": true,
-      "date": "2025-06-12T10:36:00",
-      "time_ms": 0.025033950805664062,
+      "date": "2025-06-13T10:36:00",
+      "time_ms": 0.014066696166992188,
       "error": null
     },
     "fuzzy": null,
@@ -333,8 +333,8 @@
     "description": "Time with PM",
     "default": {
       "success": true,
-      "date": "2025-06-12T22:36:28",
-      "time_ms": 0.025987625122070312,
+      "date": "2025-06-13T22:36:28",
+      "time_ms": 0.0209808349609375,
       "error": null
     },
     "fuzzy": null,
@@ -345,8 +345,8 @@
     "description": "Time with AM",
     "default": {
       "success": true,
-      "date": "2025-06-12T10:36:28",
-      "time_ms": 0.0209808349609375,
+      "date": "2025-06-13T10:36:28",
+      "time_ms": 0.02002716064453125,
       "error": null
     },
     "fuzzy": null,
@@ -357,8 +357,8 @@
     "description": "24-hour time",
     "default": {
       "success": true,
-      "date": "2025-06-12T22:36:28",
-      "time_ms": 0.013113021850585938,
+      "date": "2025-06-13T22:36:28",
+      "time_ms": 0.012874603271484375,
       "error": null
     },
     "fuzzy": null,
@@ -370,7 +370,7 @@
     "default": {
       "success": true,
       "date": "2003-09-25T10:36:28",
-      "time_ms": 0.037670135498046875,
+      "time_ms": 0.031948089599609375,
       "error": null
     },
     "fuzzy": null,
@@ -382,7 +382,7 @@
     "default": {
       "success": true,
       "date": "1996-07-10T00:00:00",
-      "time_ms": 0.03910064697265625,
+      "time_ms": 0.027894973754882812,
       "error": null
     },
     "fuzzy": null,
@@ -394,14 +394,14 @@
     "default": {
       "success": true,
       "date": "1996-07-10T12:08:00",
-      "time_ms": 0.03695487976074219,
+      "time_ms": 0.03409385681152344,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "1996-07-10T12:08:00",
-      "time_ms": 0.030994415283203125,
+      "time_ms": 0.030040740966796875,
       "error": null
     }
   },
@@ -411,16 +411,176 @@
     "default": {
       "success": true,
       "date": "2003-09-25T10:49:41.502000",
-      "time_ms": 0.025987625122070312,
+      "time_ms": 0.02574920654296875,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T10:49:41.502000",
-      "time_ms": 0.022649765014648438,
+      "time_ms": 0.02193450927734375,
       "error": null
     }
+  },
+  {
+    "input": "July 10, '96",
+    "description": "Apostrophe year without day name",
+    "default": {
+      "success": true,
+      "date": "1996-07-10T00:00:00",
+      "time_ms": 0.02193450927734375,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "'96-07-10",
+    "description": "Apostrophe year ISO style",
+    "default": {
+      "success": true,
+      "date": "1996-07-10T00:00:00",
+      "time_ms": 0.013828277587890625,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "1996-10-07T00:00:00",
+      "time_ms": 0.014066696166992188,
+      "error": null
+    }
+  },
+  {
+    "input": "10-Jul-'96",
+    "description": "Apostrophe year with month abbreviation",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: 10-Jul-'96"
+    },
+    "fuzzy": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: 10-Jul-'96"
+    },
+    "dayfirst": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: 10-Jul-'96"
+    }
+  },
+  {
+    "input": "December 25 '99",
+    "description": "Apostrophe year end of string",
+    "default": {
+      "success": true,
+      "date": "1999-12-25T00:00:00",
+      "time_ms": 0.0209808349609375,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "753 BC",
+    "description": "BC year only",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: 753 BC"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "0753-06-13T00:00:00",
+      "time_ms": 0.014066696166992188,
+      "error": null
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "2023 CE",
+    "description": "CE year",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: 2023 CE"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2023-06-13T00:00:00",
+      "time_ms": 0.012636184692382812,
+      "error": null
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "1 AD",
+    "description": "Year 1 AD",
+    "default": {
+      "success": true,
+      "date": "2025-06-01T00:00:00",
+      "time_ms": 0.013113021850585938,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "December 31, 1 BC",
+    "description": "Date with BC",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: December 31, 1 BC"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2001-12-31T00:00:00",
+      "time_ms": 0.022649765014648438,
+      "error": null
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "1996.July.10 AD",
+    "description": "AD date without time",
+    "default": {
+      "success": true,
+      "date": "1996-07-10T00:00:00",
+      "time_ms": 0.0209808349609375,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "1996-07-10T00:00:00",
+      "time_ms": 0.019073486328125,
+      "error": null
+    }
+  },
+  {
+    "input": "44 BC",
+    "description": "Julius Caesar's death year",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: 44 BC"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2044-06-13T00:00:00",
+      "time_ms": 0.012874603271484375,
+      "error": null
+    },
+    "dayfirst": null
   },
   {
     "input": "today",
@@ -485,7 +645,7 @@
     "fuzzy": {
       "success": true,
       "date": "2025-06-03T00:00:00",
-      "time_ms": 0.015735626220703125,
+      "time_ms": 0.015974044799804688,
       "error": null
     },
     "dayfirst": null
@@ -502,7 +662,7 @@
     "fuzzy": {
       "success": true,
       "date": "2025-06-02T00:00:00",
-      "time_ms": 0.015974044799804688,
+      "time_ms": 0.0152587890625,
       "error": null
     },
     "dayfirst": null
@@ -605,7 +765,7 @@
     "dayfirst": {
       "success": true,
       "date": "2004-02-29T00:00:00",
-      "time_ms": 0.012159347534179688,
+      "time_ms": 0.011920928955078125,
       "error": null
     }
   },
@@ -636,8 +796,8 @@
     "description": "Two digit number",
     "default": {
       "success": true,
-      "date": "1999-06-12T00:00:00",
-      "time_ms": 0.010967254638671875,
+      "date": "1999-06-13T00:00:00",
+      "time_ms": 0.010251998901367188,
       "error": null
     },
     "fuzzy": null,
@@ -649,7 +809,7 @@
     "default": {
       "success": true,
       "date": "2025-06-10T00:00:00",
-      "time_ms": 0.008106231689453125,
+      "time_ms": 0.008344650268554688,
       "error": null
     },
     "fuzzy": null,
@@ -660,7 +820,7 @@
     "description": "Year only",
     "default": {
       "success": true,
-      "date": "2003-06-12T00:00:00",
+      "date": "2003-06-13T00:00:00",
       "time_ms": 0.010013580322265625,
       "error": null
     },
@@ -696,7 +856,7 @@
     "fuzzy": {
       "success": true,
       "date": "2023-12-25T00:00:00",
-      "time_ms": 0.025033950805664062,
+      "time_ms": 0.0247955322265625,
       "error": null
     },
     "dayfirst": {
@@ -718,7 +878,7 @@
     "fuzzy": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.030279159545898438,
+      "time_ms": 0.030040740966796875,
       "error": null
     },
     "dayfirst": null
@@ -729,14 +889,14 @@
     "default": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.012874603271484375,
+      "time_ms": 0.013113021850585938,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T00:00:00",
-      "time_ms": 0.013113021850585938,
+      "time_ms": 0.012159347534179688,
       "error": null
     }
   },
@@ -752,7 +912,7 @@
     "fuzzy": {
       "success": true,
       "date": "2025-09-25T00:00:00",
-      "time_ms": 0.02002716064453125,
+      "time_ms": 0.021219253540039062,
       "error": null
     },
     "dayfirst": null
@@ -769,7 +929,7 @@
     "fuzzy": {
       "success": true,
       "date": "2025-09-25T00:00:00",
-      "time_ms": 0.017881393432617188,
+      "time_ms": 0.018835067749023438,
       "error": null
     },
     "dayfirst": null
@@ -780,14 +940,14 @@
     "default": {
       "success": true,
       "date": "2003-09-25T10:49:41+00:00",
-      "time_ms": 0.028848648071289062,
+      "time_ms": 0.027179718017578125,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T10:49:41+00:00",
-      "time_ms": 0.027894973754882812,
+      "time_ms": 0.024080276489257812,
       "error": null
     }
   },
@@ -797,14 +957,14 @@
     "default": {
       "success": true,
       "date": "2003-09-25T10:49:41+05:00",
-      "time_ms": 0.04100799560546875,
+      "time_ms": 0.03886222839355469,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T10:49:41+05:00",
-      "time_ms": 0.030040740966796875,
+      "time_ms": 0.028848648071289062,
       "error": null
     }
   },
@@ -814,14 +974,14 @@
     "default": {
       "success": true,
       "date": "2003-09-25T10:49:41-08:00",
-      "time_ms": 0.033855438232421875,
+      "time_ms": 0.030994415283203125,
       "error": null
     },
     "fuzzy": null,
     "dayfirst": {
       "success": true,
       "date": "2003-09-25T10:49:41-08:00",
-      "time_ms": 0.026702880859375,
+      "time_ms": 0.026941299438476562,
       "error": null
     }
   }

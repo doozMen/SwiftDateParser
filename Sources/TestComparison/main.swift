@@ -64,6 +64,20 @@ let testScenarios: [TestScenario] = [
     TestScenario(input: "1996.July.10 AD 12:08 PM", description: "Complex format with AD"),
     TestScenario(input: "2003-09-25 10:49:41,502", description: "Logger format with milliseconds"),
     
+    // Apostrophe Year Formats
+    TestScenario(input: "July 10, '96", description: "Apostrophe year without day name"),
+    TestScenario(input: "'96-07-10", description: "Apostrophe year ISO style"),
+    TestScenario(input: "10-Jul-'96", description: "Apostrophe year with month abbreviation"),
+    TestScenario(input: "December 25 '99", description: "Apostrophe year end of string"),
+    
+    // AD/BC Formats
+    TestScenario(input: "753 BC", description: "BC year only"),
+    TestScenario(input: "2023 CE", description: "CE year"),
+    TestScenario(input: "1 AD", description: "Year 1 AD"),
+    TestScenario(input: "December 31, 1 BC", description: "Date with BC"),
+    TestScenario(input: "1996.July.10 AD", description: "AD date without time"),
+    TestScenario(input: "44 BC", description: "Julius Caesar's death year"),
+    
     // Relative Dates
     TestScenario(input: "today", description: "Relative - today"),
     TestScenario(input: "tomorrow", description: "Relative - tomorrow"),
