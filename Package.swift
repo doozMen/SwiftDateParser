@@ -31,6 +31,10 @@ let package = Package(
                 .product(name: "Algorithms", package: "swift-algorithms")
             ]
         ),
+        .executableTarget(
+            name: "TestComparison",
+            dependencies: ["SwiftDateParser"]
+        ),
         .testTarget(
             name: "SwiftDateParserTests",
             dependencies: ["SwiftDateParser"]

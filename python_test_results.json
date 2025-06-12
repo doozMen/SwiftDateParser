@@ -1,0 +1,828 @@
+[
+  {
+    "input": "2003-09-25T10:49:41",
+    "description": "ISO datetime with T separator",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T10:49:41",
+      "time_ms": 0.13899803161621094,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T10:49:41",
+      "time_ms": 0.03933906555175781,
+      "error": null
+    }
+  },
+  {
+    "input": "2003-09-25 10:49:41",
+    "description": "ISO datetime with space separator",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T10:49:41",
+      "time_ms": 0.030994415283203125,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T10:49:41",
+      "time_ms": 0.024080276489257812,
+      "error": null
+    }
+  },
+  {
+    "input": "2003-09-25",
+    "description": "ISO date only",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.0171661376953125,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.013828277587890625,
+      "error": null
+    }
+  },
+  {
+    "input": "20030925T104941",
+    "description": "Compact ISO datetime",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T10:49:41",
+      "time_ms": 0.0209808349609375,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "20030925",
+    "description": "Compact ISO date",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.011920928955078125,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "09/25/2003",
+    "description": "US format MM/DD/YYYY",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.015020370483398438,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.014066696166992188,
+      "error": null
+    }
+  },
+  {
+    "input": "25/09/2003",
+    "description": "EU format DD/MM/YYYY",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.013113021850585938,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.014066696166992188,
+      "error": null
+    }
+  },
+  {
+    "input": "09-25-2003",
+    "description": "US format with dashes",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.015020370483398438,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.014066696166992188,
+      "error": null
+    }
+  },
+  {
+    "input": "25-09-2003",
+    "description": "EU format with dashes",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.013113021850585938,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.011920928955078125,
+      "error": null
+    }
+  },
+  {
+    "input": "09.25.2003",
+    "description": "US format with dots",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.02002716064453125,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.013828277587890625,
+      "error": null
+    }
+  },
+  {
+    "input": "25.09.2003",
+    "description": "EU format with dots",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.015974044799804688,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.0152587890625,
+      "error": null
+    }
+  },
+  {
+    "input": "2003/09/25",
+    "description": "Year first with slashes",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.012874603271484375,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.012159347534179688,
+      "error": null
+    }
+  },
+  {
+    "input": "10/09/03",
+    "description": "Short date - ambiguous",
+    "default": {
+      "success": true,
+      "date": "2003-10-09T00:00:00",
+      "time_ms": 0.01430511474609375,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-10T00:00:00",
+      "time_ms": 0.012874603271484375,
+      "error": null
+    }
+  },
+  {
+    "input": "10-09-03",
+    "description": "Short date with dashes",
+    "default": {
+      "success": true,
+      "date": "2003-10-09T00:00:00",
+      "time_ms": 0.013113021850585938,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-10T00:00:00",
+      "time_ms": 0.012159347534179688,
+      "error": null
+    }
+  },
+  {
+    "input": "10.09.03",
+    "description": "Short date with dots",
+    "default": {
+      "success": true,
+      "date": "2003-10-09T00:00:00",
+      "time_ms": 0.014066696166992188,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-10T00:00:00",
+      "time_ms": 0.013113021850585938,
+      "error": null
+    }
+  },
+  {
+    "input": "Sep 25 2003",
+    "description": "Month abbreviation",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.029087066650390625,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "September 25, 2003",
+    "description": "Full month name with comma",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.03266334533691406,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "25 Sep 2003",
+    "description": "Day first with month name",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.023126602172851562,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "3rd of May 2001",
+    "description": "Ordinal date",
+    "default": {
+      "success": true,
+      "date": "2001-05-03T00:00:00",
+      "time_ms": 0.03886222839355469,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "May 3rd, 2001",
+    "description": "Ordinal date US style",
+    "default": {
+      "success": true,
+      "date": "2001-05-03T00:00:00",
+      "time_ms": 0.027894973754882812,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "10:36:28",
+    "description": "Time only HH:MM:SS",
+    "default": {
+      "success": true,
+      "date": "2025-06-12T10:36:28",
+      "time_ms": 0.0782012939453125,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "10:36",
+    "description": "Time only HH:MM",
+    "default": {
+      "success": true,
+      "date": "2025-06-12T10:36:00",
+      "time_ms": 0.025033950805664062,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "10:36:28 PM",
+    "description": "Time with PM",
+    "default": {
+      "success": true,
+      "date": "2025-06-12T22:36:28",
+      "time_ms": 0.025987625122070312,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "10:36:28 AM",
+    "description": "Time with AM",
+    "default": {
+      "success": true,
+      "date": "2025-06-12T10:36:28",
+      "time_ms": 0.0209808349609375,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "22:36:28",
+    "description": "24-hour time",
+    "default": {
+      "success": true,
+      "date": "2025-06-12T22:36:28",
+      "time_ms": 0.013113021850585938,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "Thu Sep 25 10:36:28 2003",
+    "description": "Unix date format",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T10:36:28",
+      "time_ms": 0.037670135498046875,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "Wed, July 10, '96",
+    "description": "Abbreviated year with apostrophe",
+    "default": {
+      "success": true,
+      "date": "1996-07-10T00:00:00",
+      "time_ms": 0.03910064697265625,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "1996.July.10 AD 12:08 PM",
+    "description": "Complex format with AD",
+    "default": {
+      "success": true,
+      "date": "1996-07-10T12:08:00",
+      "time_ms": 0.03695487976074219,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "1996-07-10T12:08:00",
+      "time_ms": 0.030994415283203125,
+      "error": null
+    }
+  },
+  {
+    "input": "2003-09-25 10:49:41,502",
+    "description": "Logger format with milliseconds",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T10:49:41.502000",
+      "time_ms": 0.025987625122070312,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T10:49:41.502000",
+      "time_ms": 0.022649765014648438,
+      "error": null
+    }
+  },
+  {
+    "input": "today",
+    "description": "Relative - today",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: today"
+    },
+    "fuzzy": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "String does not contain a date: today"
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "tomorrow",
+    "description": "Relative - tomorrow",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: tomorrow"
+    },
+    "fuzzy": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "String does not contain a date: tomorrow"
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "yesterday",
+    "description": "Relative - yesterday",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: yesterday"
+    },
+    "fuzzy": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "String does not contain a date: yesterday"
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "3 days ago",
+    "description": "Relative - days ago",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: 3 days ago"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2025-06-03T00:00:00",
+      "time_ms": 0.015735626220703125,
+      "error": null
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "in 2 weeks",
+    "description": "Relative - in weeks",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: in 2 weeks"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2025-06-02T00:00:00",
+      "time_ms": 0.015974044799804688,
+      "error": null
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "next month",
+    "description": "Relative - next month",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: next month"
+    },
+    "fuzzy": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "String does not contain a date: next month"
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "last year",
+    "description": "Relative - last year",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: last year"
+    },
+    "fuzzy": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "String does not contain a date: last year"
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "",
+    "description": "Empty string",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "String does not contain a date: "
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "not a date",
+    "description": "Invalid text",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: not a date"
+    },
+    "fuzzy": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "String does not contain a date: not a date"
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "2003-02-29",
+    "description": "Invalid date - not leap year",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "day is out of range for month: 2003-02-29"
+    },
+    "fuzzy": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "day is out of range for month: 2003-02-29"
+    },
+    "dayfirst": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "day is out of range for month: 2003-02-29"
+    }
+  },
+  {
+    "input": "2004-02-29",
+    "description": "Valid leap year date",
+    "default": {
+      "success": true,
+      "date": "2004-02-29T00:00:00",
+      "time_ms": 0.013113021850585938,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2004-02-29T00:00:00",
+      "time_ms": 0.012159347534179688,
+      "error": null
+    }
+  },
+  {
+    "input": "2003-09-31",
+    "description": "Invalid date - September has 30 days",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "day is out of range for month: 2003-09-31"
+    },
+    "fuzzy": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "day is out of range for month: 2003-09-31"
+    },
+    "dayfirst": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "day is out of range for month: 2003-09-31"
+    }
+  },
+  {
+    "input": "99",
+    "description": "Two digit number",
+    "default": {
+      "success": true,
+      "date": "1999-06-12T00:00:00",
+      "time_ms": 0.010967254638671875,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "10",
+    "description": "Two digit number",
+    "default": {
+      "success": true,
+      "date": "2025-06-10T00:00:00",
+      "time_ms": 0.008106231689453125,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "2003",
+    "description": "Year only",
+    "default": {
+      "success": true,
+      "date": "2003-06-12T00:00:00",
+      "time_ms": 0.010013580322265625,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": null
+  },
+  {
+    "input": "Today is January 1, 2047 at 8:21:00AM",
+    "description": "Fuzzy - date in sentence",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: Today is January 1, 2047 at 8:21:00AM"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2047-01-01T08:21:00",
+      "time_ms": 0.041961669921875,
+      "error": null
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "The deadline is 2023-12-25",
+    "description": "Fuzzy - date at end",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: The deadline is 2023-12-25"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2023-12-25T00:00:00",
+      "time_ms": 0.025033950805664062,
+      "error": null
+    },
+    "dayfirst": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: The deadline is 2023-12-25"
+    }
+  },
+  {
+    "input": "On Sep 25 2003 something happened",
+    "description": "Fuzzy - date in middle",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: On Sep 25 2003 something happened"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.030279159545898438,
+      "error": null
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "2003/09/25",
+    "description": "Forward slashes",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.012874603271484375,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T00:00:00",
+      "time_ms": 0.013113021850585938,
+      "error": null
+    }
+  },
+  {
+    "input": "2003\\09\\25",
+    "description": "Backslashes",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: 2003\\09\\25"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2025-09-25T00:00:00",
+      "time_ms": 0.02002716064453125,
+      "error": null
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "2003_09_25",
+    "description": "Underscores",
+    "default": {
+      "success": false,
+      "date": null,
+      "time_ms": 0,
+      "error": "Unknown string format: 2003_09_25"
+    },
+    "fuzzy": {
+      "success": true,
+      "date": "2025-09-25T00:00:00",
+      "time_ms": 0.017881393432617188,
+      "error": null
+    },
+    "dayfirst": null
+  },
+  {
+    "input": "2003-09-25T10:49:41Z",
+    "description": "ISO with UTC timezone",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T10:49:41+00:00",
+      "time_ms": 0.028848648071289062,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T10:49:41+00:00",
+      "time_ms": 0.027894973754882812,
+      "error": null
+    }
+  },
+  {
+    "input": "2003-09-25T10:49:41+05:00",
+    "description": "ISO with timezone offset",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T10:49:41+05:00",
+      "time_ms": 0.04100799560546875,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T10:49:41+05:00",
+      "time_ms": 0.030040740966796875,
+      "error": null
+    }
+  },
+  {
+    "input": "2003-09-25T10:49:41-08:00",
+    "description": "ISO with negative timezone offset",
+    "default": {
+      "success": true,
+      "date": "2003-09-25T10:49:41-08:00",
+      "time_ms": 0.033855438232421875,
+      "error": null
+    },
+    "fuzzy": null,
+    "dayfirst": {
+      "success": true,
+      "date": "2003-09-25T10:49:41-08:00",
+      "time_ms": 0.026702880859375,
+      "error": null
+    }
+  }
+]
