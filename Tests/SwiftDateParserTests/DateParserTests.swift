@@ -5,7 +5,7 @@ import Foundation
 @Suite("Date Parser Tests")
 struct DateParserTests {
     
-    let parser: DateParser
+    let parser: DateParser2
     let calendar: Calendar
     
     init() {
@@ -13,7 +13,12 @@ struct DateParserTests {
         calendar.timeZone = TimeZone(identifier: "UTC")!
         let locale = Locale(identifier: "en_US_POSIX")
         self.calendar = calendar
-        self.parser = DateParser(calendar: calendar, locale: locale)
+        // Use default US format for short dates
+        let parserInfo = DateParser2.ParserInfo(
+            dayfirst: false,
+            yearfirst: false
+        )
+        self.parser = DateParser2(parserInfo: parserInfo, calendar: calendar, locale: locale)
     }
     
     // MARK: - ISO Format Tests
@@ -87,8 +92,8 @@ struct DateParserTests {
     @Test("Parse natural language dates")
     func testNaturalLanguageDates() throws {
         // Create a fuzzy parser
-        let fuzzyParser = DateParser(
-            parserInfo: DateParser.ParserInfo(fuzzy: true),
+        let fuzzyParser = DateParser2(
+            parserInfo: DateParser2.ParserInfo(fuzzy: true),
             calendar: calendar
         )
         
@@ -111,8 +116,8 @@ struct DateParserTests {
     
     @Test("Parse relative dates")
     func testRelativeDates() throws {
-        let fuzzyParser = DateParser(
-            parserInfo: DateParser.ParserInfo(fuzzy: true),
+        let fuzzyParser = DateParser2(
+            parserInfo: DateParser2.ParserInfo(fuzzy: true),
             calendar: calendar
         )
         
@@ -134,8 +139,8 @@ struct DateParserTests {
     
     @Test("Parse relative dates with numbers")
     func testRelativeDatesWithNumbers() throws {
-        let fuzzyParser = DateParser(
-            parserInfo: DateParser.ParserInfo(fuzzy: true),
+        let fuzzyParser = DateParser2(
+            parserInfo: DateParser2.ParserInfo(fuzzy: true),
             calendar: calendar
         )
         
@@ -206,8 +211,8 @@ struct DateParserTests {
     
     @Test("Parse custom date formats")
     func testCustomFormats() throws {
-        let fuzzyParser = DateParser(
-            parserInfo: DateParser.ParserInfo(fuzzy: true),
+        let fuzzyParser = DateParser2(
+            parserInfo: DateParser2.ParserInfo(fuzzy: true),
             calendar: calendar
         )
         

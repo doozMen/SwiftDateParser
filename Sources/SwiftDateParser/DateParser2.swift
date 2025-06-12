@@ -59,10 +59,10 @@ public struct DateParser2 {
     
     // Pre-compiled regex patterns for performance
     private static let isoPattern = try! NSRegularExpression(
-        pattern: #"^(\d{4})-(\d{1,2})-(\d{1,2})(?:[T ](\d{1,2}):(\d{1,2}):(\d{1,2})(?:\.(\d+))?(?:([+-]\d{2}):?(\d{2})|Z)?)?$"#
+        pattern: #"^(\d{4})-(\d{1,2})-(\d{1,2})(?:[T ](\d{1,2})(?::(\d{1,2})(?::(\d{1,2})(?:\.(\d+))?)?)?(?:([+-]\d{2}):?(\d{2})|Z)?)?$"#
     )
     private static let compactISOPattern = try! NSRegularExpression(
-        pattern: #"^(\d{4})(\d{2})(\d{2})(?:T(\d{2})(\d{2})(\d{2}))?$"#
+        pattern: #"^(\d{4})(\d{2})(\d{2})(?:T(\d{2})(?:(\d{2})(?:(\d{2}))?)?)?$"#
     )
     private static let compactISOPatternAlt = try! NSRegularExpression(
         pattern: #"^(\d{8})T(\d{4,6})$"#
@@ -157,7 +157,12 @@ public struct DateParser2 {
             return ParseResultWithTokens(date: date, skippedTokens: [])
         }
         
-        // 5. Natural language parsing (only if fuzzy enabled)
+        // 5. Month names (can work without fuzzy)
+        if let date = parseMonthName(trimmed) {
+            return ParseResultWithTokens(date: date, skippedTokens: [])
+        }
+        
+        // 6. Natural language parsing (only if fuzzy enabled)
         if parserInfo.fuzzy {
             if let result = parseNaturalLanguage(trimmed) {
                 return result
@@ -281,16 +286,23 @@ public struct DateParser2 {
             // Handle time if present
             if match.range(at: 4).location != NSNotFound,
                let hourRange = Range(match.range(at: 4), in: text),
-               let minuteRange = Range(match.range(at: 5), in: text),
-               let hour = Int(text[hourRange]),
-               let minute = Int(text[minuteRange]) {
+               let hour = Int(text[hourRange]) {
                 components.hour = hour
-                components.minute = minute
                 
-                if match.range(at: 6).location != NSNotFound,
-                   let secondRange = Range(match.range(at: 6), in: text),
-                   let second = Int(text[secondRange]) {
-                    components.second = second
+                // Minutes are optional
+                if match.range(at: 5).location != NSNotFound,
+                   let minuteRange = Range(match.range(at: 5), in: text),
+                   let minute = Int(text[minuteRange]) {
+                    components.minute = minute
+                    
+                    // Seconds are optional
+                    if match.range(at: 6).location != NSNotFound,
+                       let secondRange = Range(match.range(at: 6), in: text),
+                       let second = Int(text[secondRange]) {
+                        components.second = second
+                    }
+                } else {
+                    components.minute = 0  // Default to 0 minutes
                 }
             }
             
@@ -377,7 +389,16 @@ public struct DateParser2 {
         } else if num3 > 31 || num3 >= 1000 {
             // Last number is year
             year = num3
-            if parserInfo.dayfirst {
+            // Check if num1 or num2 is clearly a day (> 12)
+            if num1 > 12 && num1 <= 31 {
+                // num1 must be day
+                day = num1
+                month = num2
+            } else if num2 > 12 && num2 <= 31 {
+                // num2 must be day
+                month = num1
+                day = num2
+            } else if parserInfo.dayfirst {
                 day = num1
                 month = num2
             } else {
@@ -385,13 +406,37 @@ public struct DateParser2 {
                 day = num2
             }
         } else {
-            // Ambiguous - apply two-digit year logic
-            if parserInfo.yearfirst {
+            // Ambiguous case - need to determine which is which
+            
+            // If one number is clearly a day (> 12), use that to disambiguate
+            if num1 > 12 && num1 <= 31 {
+                // num1 must be day
+                day = num1
+                month = num2
+                year = num3 > 99 ? num3 : convertTwoDigitYear(num3)
+            } else if num2 > 12 && num2 <= 31 {
+                // num2 must be day
+                month = num1
+                day = num2
+                year = num3 > 99 ? num3 : convertTwoDigitYear(num3)
+            } else if num3 > 31 && num3 <= 99 {
+                // Two-digit year at end
+                year = convertTwoDigitYear(num3)
+                if parserInfo.dayfirst {
+                    day = num1
+                    month = num2
+                } else {
+                    month = num1
+                    day = num2
+                }
+            } else if parserInfo.yearfirst && num1 <= 99 {
+                // YY-MM-DD format
                 year = convertTwoDigitYear(num1)
                 month = num2
                 day = num3
             } else {
-                year = convertTwoDigitYear(num3)
+                // Default: assume last number is year
+                year = num3 > 99 ? num3 : convertTwoDigitYear(num3)
                 if parserInfo.dayfirst {
                     day = num1
                     month = num2
@@ -443,6 +488,26 @@ public struct DateParser2 {
         components.timeZone = calendar.timeZone
         
         return calendar.date(from: components)
+    }
+    
+    /// Parse standalone month names
+    private func parseMonthName(_ text: String) -> Date? {
+        let lowercased = text.lowercased()
+        
+        // Check if it's just a month name
+        if let month = Self.monthNames[lowercased] {
+            var components = calendar.dateComponents(
+                [.year, .day],
+                from: parserInfo.defaultDate
+            )
+            components.month = month
+            components.calendar = calendar
+            components.timeZone = calendar.timeZone
+            
+            return calendar.date(from: components)
+        }
+        
+        return nil
     }
     
     /// Parse time-only formats

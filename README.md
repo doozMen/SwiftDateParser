@@ -1,5 +1,11 @@
 # SwiftDateParser
 
+> **⚠️ Experimental Project Notice**
+> 
+> This library was created as an experiment to explore whether AI could successfully convert a Python library to Swift. It's a port of Python's [dateutil](https://github.com/dateutil/dateutil) parser, developed with Claude Code as a proof of concept for AI-assisted library conversion.
+> 
+> While the library is functional and well-tested, please be aware of its experimental nature when considering it for production use.
+
 A Swift port of Python's powerful [dateutil](https://github.com/dateutil/dateutil) parser, created with Claude Code. This open-source library brings the flexibility and robustness of Python's date parsing capabilities to the Swift ecosystem, providing natural language date parsing, multiple format support, and advanced NLP-based date extraction from text.
 
 ## Features

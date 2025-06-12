@@ -80,11 +80,13 @@ public struct NLPDateExtractor2 {
         // Relative date patterns
         let relativePatterns = [
             // Relative with numbers
-            (pattern: #"\b(\d+)\s+(day|week|month|year)s?\s+(ago|from now)\b"#, confidence: 0.85),
+            (pattern: #"(\d+)\s+(day|week|month|year)s?\s+ago"#, confidence: 0.85),
             // "in X time" format
             (pattern: #"\bin\s+(\d+)\s+(day|week|month|year)s?\b"#, confidence: 0.85),
+            // Month names alone
+            (pattern: #"\b(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)\b"#, confidence: 0.7),
             // Month names with optional day/year
-            (pattern: #"\b(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)\s+(\d{1,2})?,?\s*(\d{2,4})?\b"#, confidence: 0.8)
+            (pattern: #"\b(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)\s+(\d{1,2}),?\s*(\d{2,4})\b"#, confidence: 0.9)
         ]
         
         for (pattern, confidence) in relativePatterns {
