@@ -64,13 +64,32 @@ swiftlint autocorrect
 
 ### Project Structure
 
-- **`Sources/SwiftDateParser/`** - Source code
-  - `SwiftDateParser.swift` - Main public API providing static methods for date parsing
-  - `DateParser.swift` - Core parsing engine with configurable options (dayfirst, yearfirst, fuzzy)
-  - `NLPDateExtractor.swift` - Natural language processing for extracting dates from text
-- **`Tests/SwiftDateParserTests/`** - Test suite using Swift Testing framework
-- **`Package.swift`** - Package manifest defining dependencies and targets
-- **`.swiftlint.yml`** - SwiftLint configuration for code style
+```
+SwiftDateParser/
+├── Sources/SwiftDateParser/       # Source code
+│   ├── SwiftDateParser.swift      # Main public API
+│   ├── DateParser.swift           # Legacy parser (delegates to DateParser2)
+│   ├── DateParser2.swift          # Full-featured parser with all capabilities
+│   ├── DateParser3.swift          # Ultra-optimized parser for performance
+│   ├── DateParserError.swift      # Error types
+│   ├── NLPDateExtractor.swift     # Legacy NLP extractor
+│   └── NLPDateExtractor2.swift    # Enhanced NLP date extraction
+├── Tests/SwiftDateParserTests/    # Comprehensive test suite
+│   ├── DateParserTests.swift      # Core parser tests
+│   ├── DateParserComprehensiveTests.swift  # All parser features
+│   ├── DateParserEdgeCaseTests.swift       # Edge cases and stress tests
+│   ├── NLPDateExtractorTests.swift         # Basic NLP tests
+│   ├── NLPDateExtractorComprehensiveTests.swift  # Full NLP coverage
+│   ├── SwiftDateParserTests.swift          # API tests
+│   └── SwiftDateParserREADMETests.swift    # README validation
+├── docs/                          # Documentation and reports
+├── Package.swift                  # Package manifest
+├── Package.resolved               # Resolved dependencies
+├── README.md                      # Project documentation
+├── LICENSE                        # MIT License
+├── CHANGELOG.md                   # Version history
+└── CLAUDE.md                      # This file
+```
 
 ### Key Technical Details
 
@@ -85,20 +104,31 @@ swiftlint autocorrect
 ### Core Components
 
 1. **SwiftDateParser** - Static API facade
-   - `parse(_:fuzzy:)` - Parse date strings
+   - `parse(_:fuzzy:)` - Parse date strings (uses DateParser2)
    - `extractDates(from:)` - Extract dates from text
-   - `createParser()` - Create custom parser instances
-   - `createExtractor()` - Create custom extractor instances
+   - `parseWithTokens(_:fuzzy:)` - Parse with token extraction
+   - `createParser()` - Create DateParser2 instance
+   - `createParserV3()` - Create optimized DateParser3 instance
+   - `createExtractor()` - Create NLPDateExtractor2 instance
 
-2. **DateParser** - Configurable parsing engine
-   - Handles multiple date formats (ISO, US, EU, etc.)
-   - Supports relative dates ("tomorrow", "3 days ago")
-   - Configurable parsing options
+2. **DateParser2** - Full-featured parsing engine
+   - All date formats: ISO, US, EU, compact, logger format
+   - Apostrophe years ('96), AD/BC dates, ordinal dates
+   - Relative dates ("tomorrow", "3 days ago", "next Monday")
+   - Timezone support, fuzzy parsing, date validation
+   - Configurable: dayfirst, yearfirst, defaultDate
 
-3. **NLPDateExtractor** - Natural language processing
-   - Extracts dates from unstructured text
-   - Provides confidence scores
-   - Returns context around found dates
+3. **DateParser3** - Performance-optimized parser
+   - Simplified feature set for speed
+   - Pre-computed patterns and optimizations
+   - ~10x faster than DateParser2
+
+4. **NLPDateExtractor2** - Enhanced NLP extraction
+   - NSDataDetector for system date detection
+   - Custom patterns for relative dates
+   - Context extraction with configurable word count
+   - Confidence scoring
+   - Deduplication and position sorting
 
 ## Development Workflow
 
@@ -108,16 +138,34 @@ swiftlint autocorrect
 - Test functions should be marked with `@Test`
 - Use `#expect` for assertions
 - Group related tests with `@Suite`
+- Comprehensive test coverage includes:
+  - Basic functionality tests
+  - Edge cases and malformed inputs
+  - Performance benchmarks
+  - README claim validation
+  - 69 tests across 7 test suites
 
 ### Code Organization
 
-- Public API should be exposed through `SwiftDateParser.swift`
-- Core parsing logic belongs in `DateParser.swift`
-- NLP functionality should be in `NLPDateExtractor.swift`
-- Keep internal types and methods marked as `internal` or `private`
+- Public API exposed through `SwiftDateParser.swift`
+- Core parsing in `DateParser2.swift` (full features) and `DateParser3.swift` (optimized)
+- NLP functionality in `NLPDateExtractor2.swift`
+- Legacy compatibility in `DateParser.swift` and `NLPDateExtractor.swift`
+- Error types in `DateParserError.swift`
+- Keep internal types marked as `internal` or `private`
 
 ### Performance Considerations
 
-- Date formatters are cached for performance
-- Regex patterns are pre-compiled where possible
-- Consider lazy initialization for expensive resources
+- NSCache for date formatter caching
+- Pre-compiled regex patterns as static properties
+- Lazy initialization for NLP components
+- DateParser3 offers ~10x performance improvement
+- Inline optimizations with `@inlinable`
+- Static lookup tables for O(1) month name resolution
+
+### Known Limitations
+
+- Some relative dates ("next Monday") need implementation
+- AD/BC date calculations need refinement
+- Timezone parsing partially implemented
+- NLP extraction performance slower than claimed in README
