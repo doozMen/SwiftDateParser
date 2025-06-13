@@ -74,9 +74,9 @@ public struct SwiftDateParser {
         return NLPDateExtractor(parser: parser ?? DateParser())
     }
     
-    /// Convenience method to parse a date string (uses ultra-optimized Parser3)
+    /// Convenience method to parse a date string (uses DateParser2 for full feature support)
     public static func parse(_ dateString: String, fuzzy: Bool = true) throws -> Date {
-        let parser = createParserV3(fuzzy: fuzzy)
+        let parser = createParser(fuzzy: fuzzy)
         return try parser.parse(dateString)
     }
     
@@ -88,7 +88,12 @@ public struct SwiftDateParser {
     
     /// Parse with tokens - returns date and skipped tokens
     public static func parseWithTokens(_ dateString: String, fuzzy: Bool = true) throws -> DateParser2.ParseResultWithTokens {
-        let parser = createParser(fuzzy: fuzzy, validateDates: false)
+        let parserInfo = DateParser2.ParserInfo(
+            fuzzy: fuzzy,
+            fuzzyWithTokens: true,
+            validateDates: false
+        )
+        let parser = DateParser2(parserInfo: parserInfo)
         return try parser.parseWithTokens(dateString)
     }
 }
