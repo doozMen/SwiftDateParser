@@ -3,12 +3,12 @@
     "dayfirst" : {
       "date" : "2003-09-25T08:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.010013580322265625
+      "timeMs" : 0.033974647521972656
     },
     "default" : {
       "date" : "2003-09-25T08:49:41.000Z",
       "success" : true,
-      "timeMs" : 6.497025489807129
+      "timeMs" : 12.153983116149902
     },
     "description" : "ISO datetime with T separator",
     "input" : "2003-09-25T10:49:41"
@@ -17,12 +17,12 @@
     "dayfirst" : {
       "date" : "2003-09-25T08:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.02193450927734375
     },
     "default" : {
       "date" : "2003-09-25T08:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.007033348083496094
+      "timeMs" : 0.02491474151611328
     },
     "description" : "ISO datetime with space separator",
     "input" : "2003-09-25 10:49:41"
@@ -31,12 +31,12 @@
     "dayfirst" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.016927719116210938
     },
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0059604644775390625
+      "timeMs" : 0.01895427703857422
     },
     "description" : "ISO date only",
     "input" : "2003-09-25"
@@ -45,7 +45,7 @@
     "default" : {
       "date" : "2003-09-25T08:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.04601478576660156
+      "timeMs" : 0.11599063873291016
     },
     "description" : "Compact ISO datetime",
     "input" : "20030925T104941"
@@ -54,7 +54,7 @@
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.003933906555175781
+      "timeMs" : 0.015020370483398438
     },
     "description" : "Compact ISO date",
     "input" : "20030925"
@@ -63,12 +63,12 @@
     "dayfirst" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.02002716064453125
     },
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.07200241088867188
+      "timeMs" : 0.186920166015625
     },
     "description" : "US format MM\/DD\/YYYY",
     "input" : "09\/25\/2003"
@@ -77,12 +77,12 @@
     "dayfirst" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0040531158447265625
+      "timeMs" : 0.01704692840576172
     },
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.003933906555175781
+      "timeMs" : 0.01800060272216797
     },
     "description" : "EU format DD\/MM\/YYYY",
     "input" : "25\/09\/2003"
@@ -91,12 +91,12 @@
     "dayfirst" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.01704692840576172
     },
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0040531158447265625
+      "timeMs" : 0.01609325408935547
     },
     "description" : "US format with dashes",
     "input" : "09-25-2003"
@@ -105,12 +105,12 @@
     "dayfirst" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.01704692840576172
     },
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.015974044799804688
     },
     "description" : "EU format with dashes",
     "input" : "25-09-2003"
@@ -119,12 +119,12 @@
     "dayfirst" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.003933906555175781
+      "timeMs" : 0.01704692840576172
     },
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.01609325408935547
     },
     "description" : "US format with dots",
     "input" : "09.25.2003"
@@ -133,12 +133,12 @@
     "dayfirst" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.015974044799804688
     },
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.01704692840576172
     },
     "description" : "EU format with dots",
     "input" : "25.09.2003"
@@ -147,12 +147,12 @@
     "dayfirst" : {
       "date" : "2005-01-08T23:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0040531158447265625
+      "timeMs" : 0.014901161193847656
     },
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.003933906555175781
+      "timeMs" : 0.012993812561035156
     },
     "description" : "Year first with slashes",
     "input" : "2003\/09\/25"
@@ -161,12 +161,12 @@
     "dayfirst" : {
       "date" : "2003-09-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.003933906555175781
+      "timeMs" : 0.015974044799804688
     },
     "default" : {
       "date" : "2003-10-08T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.008940696716308594
+      "timeMs" : 0.02193450927734375
     },
     "description" : "Short date - ambiguous",
     "input" : "10\/09\/03"
@@ -175,12 +175,12 @@
     "dayfirst" : {
       "date" : "2003-09-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0040531158447265625
+      "timeMs" : 0.015020370483398438
     },
     "default" : {
       "date" : "2003-10-08T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.014066696166992188
     },
     "description" : "Short date with dashes",
     "input" : "10-09-03"
@@ -189,12 +189,12 @@
     "dayfirst" : {
       "date" : "2003-09-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0040531158447265625
+      "timeMs" : 0.014066696166992188
     },
     "default" : {
       "date" : "2003-10-08T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.003933906555175781
+      "timeMs" : 0.012993812561035156
     },
     "description" : "Short date with dots",
     "input" : "10.09.03"
@@ -203,7 +203,7 @@
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.8569955825805664
+      "timeMs" : 1.757979393005371
     },
     "description" : "Month abbreviation",
     "input" : "Sep 25 2003"
@@ -212,7 +212,7 @@
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.05602836608886719
+      "timeMs" : 0.12600421905517578
     },
     "description" : "Full month name with comma",
     "input" : "September 25, 2003"
@@ -221,7 +221,7 @@
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.1800060272216797
+      "timeMs" : 0.3859996795654297
     },
     "description" : "Day first with month name",
     "input" : "25 Sep 2003"
@@ -230,7 +230,7 @@
     "default" : {
       "date" : "2001-05-02T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 1.6300678253173828
+      "timeMs" : 3.286004066467285
     },
     "description" : "Ordinal date",
     "input" : "3rd of May 2001"
@@ -239,7 +239,7 @@
     "default" : {
       "date" : "2001-05-02T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.5170106887817383
+      "timeMs" : 0.9849071502685547
     },
     "description" : "Ordinal date US style",
     "input" : "May 3rd, 2001"
@@ -248,7 +248,7 @@
     "default" : {
       "date" : "2025-06-13T08:36:28.000Z",
       "success" : true,
-      "timeMs" : 0.028967857360839844
+      "timeMs" : 0.04303455352783203
     },
     "description" : "Time only HH:MM:SS",
     "input" : "10:36:28"
@@ -257,7 +257,7 @@
     "default" : {
       "date" : "2025-06-13T08:36:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.015974044799804688
     },
     "description" : "Time only HH:MM",
     "input" : "10:36"
@@ -266,7 +266,7 @@
     "default" : {
       "date" : "2025-06-13T20:36:28.000Z",
       "success" : true,
-      "timeMs" : 0.007033348083496094
+      "timeMs" : 0.01800060272216797
     },
     "description" : "Time with PM",
     "input" : "10:36:28 PM"
@@ -275,7 +275,7 @@
     "default" : {
       "date" : "2025-06-13T08:36:28.000Z",
       "success" : true,
-      "timeMs" : 0.007033348083496094
+      "timeMs" : 0.016927719116210938
     },
     "description" : "Time with AM",
     "input" : "10:36:28 AM"
@@ -284,7 +284,7 @@
     "default" : {
       "date" : "2025-06-13T20:36:28.000Z",
       "success" : true,
-      "timeMs" : 0.0059604644775390625
+      "timeMs" : 0.016927719116210938
     },
     "description" : "24-hour time",
     "input" : "22:36:28"
@@ -293,7 +293,7 @@
     "default" : {
       "date" : "2003-09-25T08:36:28.000Z",
       "success" : true,
-      "timeMs" : 0.2199411392211914
+      "timeMs" : 0.4159212112426758
     },
     "description" : "Unix date format",
     "input" : "Thu Sep 25 10:36:28 2003"
@@ -302,7 +302,7 @@
     "default" : {
       "date" : "1996-07-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.5309581756591797
+      "timeMs" : 0.5849599838256836
     },
     "description" : "Abbreviated year with apostrophe",
     "input" : "Wed, July 10, '96"
@@ -311,12 +311,12 @@
     "dayfirst" : {
       "date" : "1996-07-10T10:08:00.000Z",
       "success" : true,
-      "timeMs" : 0.4649162292480469
+      "timeMs" : 0.8330345153808594
     },
     "default" : {
       "date" : "1996-07-10T10:08:00.000Z",
       "success" : true,
-      "timeMs" : 0.5049705505371094
+      "timeMs" : 0.8480548858642578
     },
     "description" : "Complex format with AD",
     "input" : "1996.July.10 AD 12:08 PM"
@@ -325,12 +325,12 @@
     "dayfirst" : {
       "date" : "2003-09-25T08:49:41.502Z",
       "success" : true,
-      "timeMs" : 0.42808055877685547
+      "timeMs" : 0.702977180480957
     },
     "default" : {
       "date" : "2003-09-25T08:49:41.502Z",
       "success" : true,
-      "timeMs" : 0.4520416259765625
+      "timeMs" : 0.7189512252807617
     },
     "description" : "Logger format with milliseconds",
     "input" : "2003-09-25 10:49:41,502"
@@ -339,7 +339,7 @@
     "default" : {
       "date" : "1996-07-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.3180503845214844
+      "timeMs" : 0.5420446395874023
     },
     "description" : "Apostrophe year without day name",
     "input" : "July 10, '96"
@@ -348,12 +348,12 @@
     "dayfirst" : {
       "date" : "1996-07-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.3180503845214844
+      "timeMs" : 0.5120038986206055
     },
     "default" : {
       "date" : "1996-07-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.30994415283203125
+      "timeMs" : 0.5270242691040039
     },
     "description" : "Apostrophe year ISO style",
     "input" : "'96-07-10"
@@ -362,12 +362,12 @@
     "dayfirst" : {
       "date" : "1996-07-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.4839897155761719
+      "timeMs" : 0.6339550018310547
     },
     "default" : {
       "date" : "1996-07-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.5140304565429688
+      "timeMs" : 0.6539821624755859
     },
     "description" : "Apostrophe year with month abbreviation",
     "input" : "10-Jul-'96"
@@ -376,7 +376,7 @@
     "default" : {
       "date" : "1999-12-24T23:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.33402442932128906
+      "timeMs" : 0.5189180374145508
     },
     "description" : "Apostrophe year end of string",
     "input" : "December 25 '99"
@@ -385,7 +385,7 @@
     "default" : {
       "date" : "0754-12-31T23:42:30.000Z",
       "success" : true,
-      "timeMs" : 0.47707557678222656
+      "timeMs" : 0.8050203323364258
     },
     "description" : "BC year only",
     "input" : "753 BC"
@@ -394,7 +394,7 @@
     "default" : {
       "date" : "2022-12-31T23:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.4659891128540039
+      "timeMs" : 0.6879568099975586
     },
     "description" : "CE year",
     "input" : "2023 CE"
@@ -403,7 +403,7 @@
     "default" : {
       "date" : "0001-12-31T23:42:30.000Z",
       "success" : true,
-      "timeMs" : 0.47206878662109375
+      "timeMs" : 0.6819963455200195
     },
     "description" : "Year 1 AD",
     "input" : "1 AD"
@@ -412,7 +412,7 @@
     "default" : {
       "date" : "0002-12-31T23:42:30.000Z",
       "success" : true,
-      "timeMs" : 0.47397613525390625
+      "timeMs" : 0.6930828094482422
     },
     "description" : "Date with BC",
     "input" : "December 31, 1 BC"
@@ -421,12 +421,12 @@
     "dayfirst" : {
       "date" : "1996-07-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.4940032958984375
+      "timeMs" : 0.7219314575195312
     },
     "default" : {
       "date" : "1996-07-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.4919767379760742
+      "timeMs" : 0.7259845733642578
     },
     "description" : "AD date without time",
     "input" : "1996.July.10 AD"
@@ -435,14 +435,14 @@
     "default" : {
       "date" : "0045-12-31T23:42:30.000Z",
       "success" : true,
-      "timeMs" : 0.4730224609375
+      "timeMs" : 0.6870031356811523
     },
     "description" : "Julius Caesar's death year",
     "input" : "44 BC"
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: 'today'",
+      "error" : "Unable to parse date: 'today'",
       "success" : false,
       "timeMs" : 0
     },
@@ -450,13 +450,13 @@
     "fuzzy" : {
       "date" : "2025-06-12T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.24998188018798828
+      "timeMs" : 0.3750324249267578
     },
     "input" : "today"
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: 'tomorrow'",
+      "error" : "Unable to parse date: 'tomorrow'",
       "success" : false,
       "timeMs" : 0
     },
@@ -464,13 +464,13 @@
     "fuzzy" : {
       "date" : "2025-06-13T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.2340078353881836
+      "timeMs" : 0.3418922424316406
     },
     "input" : "tomorrow"
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: 'yesterday'",
+      "error" : "Unable to parse date: 'yesterday'",
       "success" : false,
       "timeMs" : 0
     },
@@ -478,69 +478,69 @@
     "fuzzy" : {
       "date" : "2025-06-11T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.2321004867553711
+      "timeMs" : 0.3160238265991211
     },
     "input" : "yesterday"
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: '3 days ago'",
+      "error" : "Unable to parse date: '3 days ago'",
       "success" : false,
       "timeMs" : 0
     },
     "description" : "Relative - days ago",
     "fuzzy" : {
-      "date" : "2025-06-10T07:51:53.160Z",
+      "date" : "2025-06-10T21:13:24.606Z",
       "success" : true,
-      "timeMs" : 0.3209114074707031
+      "timeMs" : 0.4309415817260742
     },
     "input" : "3 days ago"
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: 'in 2 weeks'",
+      "error" : "Unable to parse date: 'in 2 weeks'",
       "success" : false,
       "timeMs" : 0
     },
     "description" : "Relative - in weeks",
     "fuzzy" : {
-      "date" : "2025-06-27T07:51:53.161Z",
+      "date" : "2025-06-27T21:13:24.608Z",
       "success" : true,
-      "timeMs" : 0.3050565719604492
+      "timeMs" : 0.41806697845458984
     },
     "input" : "in 2 weeks"
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: 'next month'",
+      "error" : "Unable to parse date: 'next month'",
       "success" : false,
       "timeMs" : 0
     },
     "description" : "Relative - next month",
     "fuzzy" : {
-      "date" : "2025-07-13T07:51:53.162Z",
+      "date" : "2025-07-13T21:13:24.609Z",
       "success" : true,
-      "timeMs" : 0.3800392150878906
+      "timeMs" : 0.49805641174316406
     },
     "input" : "next month"
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: 'last year'",
+      "error" : "Unable to parse date: 'last year'",
       "success" : false,
       "timeMs" : 0
     },
     "description" : "Relative - last year",
     "fuzzy" : {
-      "date" : "2024-06-13T07:51:53.163Z",
+      "date" : "2024-06-13T21:13:24.610Z",
       "success" : true,
-      "timeMs" : 0.3739595413208008
+      "timeMs" : 0.4919767379760742
     },
     "input" : "last year"
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: ''",
+      "error" : "Unable to parse date: ''",
       "success" : false,
       "timeMs" : 0
     },
@@ -549,13 +549,13 @@
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: 'not a date'",
+      "error" : "Unable to parse date: 'not a date'",
       "success" : false,
       "timeMs" : 0
     },
     "description" : "Invalid text",
     "fuzzy" : {
-      "error" : "Unable to parse date from string: 'not a date'",
+      "error" : "Unable to parse date: 'not a date'",
       "success" : false,
       "timeMs" : 0
     },
@@ -565,12 +565,12 @@
     "dayfirst" : {
       "date" : "2003-02-28T23:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.007987022399902344
     },
     "default" : {
       "date" : "2003-02-28T23:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.03993511199951172
+      "timeMs" : 0.04792213439941406
     },
     "description" : "Invalid date - not leap year",
     "input" : "2003-02-29"
@@ -579,12 +579,12 @@
     "dayfirst" : {
       "date" : "2004-02-28T23:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.007033348083496094
     },
     "default" : {
       "date" : "2004-02-28T23:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0040531158447265625
+      "timeMs" : 0.0069141387939453125
     },
     "description" : "Valid leap year date",
     "input" : "2004-02-29"
@@ -593,12 +593,12 @@
     "dayfirst" : {
       "date" : "2003-09-30T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0040531158447265625
+      "timeMs" : 0.007033348083496094
     },
     "default" : {
       "date" : "2003-09-30T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.03707408905029297
+      "timeMs" : 0.04506111145019531
     },
     "description" : "Invalid date - September has 30 days",
     "input" : "2003-09-31"
@@ -607,7 +607,7 @@
     "default" : {
       "date" : "1999-06-12T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.008106231689453125
+      "timeMs" : 0.007987022399902344
     },
     "description" : "Two digit number",
     "input" : "99"
@@ -616,7 +616,7 @@
     "default" : {
       "date" : "2025-06-09T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0040531158447265625
+      "timeMs" : 0.007987022399902344
     },
     "description" : "Two digit number",
     "input" : "10"
@@ -625,7 +625,7 @@
     "default" : {
       "date" : "2003-06-12T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0029802322387695312
+      "timeMs" : 0.007987022399902344
     },
     "description" : "Year only",
     "input" : "2003"
@@ -634,25 +634,25 @@
     "default" : {
       "date" : "2046-12-31T23:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.5409717559814453
+      "timeMs" : 0.6569623947143555
     },
     "description" : "Fuzzy - date in sentence",
     "input" : "Today is January 1, 2047 at 8:21:00AM"
   },
   {
     "dayfirst" : {
-      "error" : "Unable to parse date from string: 'The deadline is 2023-12-25'",
+      "error" : "Unable to parse date: 'The deadline is 2023-12-25'",
       "success" : false,
       "timeMs" : 0
     },
     "default" : {
-      "error" : "Unable to parse date from string: 'The deadline is 2023-12-25'",
+      "error" : "Unable to parse date: 'The deadline is 2023-12-25'",
       "success" : false,
       "timeMs" : 0
     },
     "description" : "Fuzzy - date at end",
     "fuzzy" : {
-      "error" : "Unable to parse date from string: 'The deadline is 2023-12-25'",
+      "error" : "Unable to parse date: 'The deadline is 2023-12-25'",
       "success" : false,
       "timeMs" : 0
     },
@@ -662,7 +662,7 @@
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.5339384078979492
+      "timeMs" : 0.6489753723144531
     },
     "description" : "Fuzzy - date in middle",
     "input" : "On Sep 25 2003 something happened"
@@ -671,25 +671,25 @@
     "dayfirst" : {
       "date" : "2005-01-08T23:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.008940696716308594
     },
     "default" : {
       "date" : "2003-09-24T22:00:00.000Z",
       "success" : true,
-      "timeMs" : 0.0059604644775390625
+      "timeMs" : 0.008106231689453125
     },
     "description" : "Forward slashes",
     "input" : "2003\/09\/25"
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: '2003\\09\\25'",
+      "error" : "Unable to parse date: '2003\\09\\25'",
       "success" : false,
       "timeMs" : 0
     },
     "description" : "Backslashes",
     "fuzzy" : {
-      "error" : "Unable to parse date from string: '2003\\09\\25'",
+      "error" : "Unable to parse date: '2003\\09\\25'",
       "success" : false,
       "timeMs" : 0
     },
@@ -697,13 +697,13 @@
   },
   {
     "default" : {
-      "error" : "Unable to parse date from string: '2003_09_25'",
+      "error" : "Unable to parse date: '2003_09_25'",
       "success" : false,
       "timeMs" : 0
     },
     "description" : "Underscores",
     "fuzzy" : {
-      "error" : "Unable to parse date from string: '2003_09_25'",
+      "error" : "Unable to parse date: '2003_09_25'",
       "success" : false,
       "timeMs" : 0
     },
@@ -713,12 +713,12 @@
     "dayfirst" : {
       "date" : "2003-09-25T08:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.006079673767089844
+      "timeMs" : 0.007987022399902344
     },
     "default" : {
       "date" : "2003-09-25T08:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.009059906005859375
+      "timeMs" : 0.007987022399902344
     },
     "description" : "ISO with UTC timezone",
     "input" : "2003-09-25T10:49:41Z"
@@ -727,12 +727,12 @@
     "dayfirst" : {
       "date" : "2003-09-25T05:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.0050067901611328125
+      "timeMs" : 0.009059906005859375
     },
     "default" : {
       "date" : "2003-09-25T05:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.028967857360839844
+      "timeMs" : 0.0209808349609375
     },
     "description" : "ISO with timezone offset",
     "input" : "2003-09-25T10:49:41+05:00"
@@ -741,12 +741,12 @@
     "dayfirst" : {
       "date" : "2003-09-25T18:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.0059604644775390625
+      "timeMs" : 0.007987022399902344
     },
     "default" : {
       "date" : "2003-09-25T18:49:41.000Z",
       "success" : true,
-      "timeMs" : 0.0059604644775390625
+      "timeMs" : 0.010013580322265625
     },
     "description" : "ISO with negative timezone offset",
     "input" : "2003-09-25T10:49:41-08:00"
