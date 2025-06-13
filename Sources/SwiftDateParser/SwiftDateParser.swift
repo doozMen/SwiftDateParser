@@ -41,6 +41,29 @@ public struct SwiftDateParser {
         return DateParser2(parserInfo: parserInfo)
     }
     
+    /// Create an ultra-optimized DateParser3 instance
+    public static func createParserV3(
+        dayfirst: Bool = false,
+        yearfirst: Bool = false,
+        fuzzy: Bool = true,
+        defaultDate: Date = Date(),
+        validateDates: Bool = false,
+        ignoretz: Bool = false,
+        tzinfos: [String: TimeZone]? = nil
+    ) -> DateParser3 {
+        let parserInfo = DateParser3.ParserInfo(
+            dayfirst: dayfirst,
+            yearfirst: yearfirst,
+            fuzzy: fuzzy,
+            fuzzyWithTokens: false,
+            validateDates: validateDates,
+            defaultDate: defaultDate,
+            ignoretz: ignoretz,
+            tzinfos: tzinfos
+        )
+        return DateParser3(parserInfo: parserInfo)
+    }
+    
     /// Create an NLP date extractor
     public static func createExtractor(parser: DateParser2? = nil) -> NLPDateExtractor2 {
         return NLPDateExtractor2(parser: parser ?? createParser())
@@ -51,9 +74,9 @@ public struct SwiftDateParser {
         return NLPDateExtractor(parser: parser ?? DateParser())
     }
     
-    /// Convenience method to parse a date string
+    /// Convenience method to parse a date string (uses ultra-optimized Parser3)
     public static func parse(_ dateString: String, fuzzy: Bool = true) throws -> Date {
-        let parser = createParser(fuzzy: fuzzy)
+        let parser = createParserV3(fuzzy: fuzzy)
         return try parser.parse(dateString)
     }
     
