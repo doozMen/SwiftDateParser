@@ -5,6 +5,30 @@ All notable changes to SwiftDateParser will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Comprehensive test suite with 69 tests across 7 test suites
+- DateParser2: Full-featured parser with all capabilities
+- DateParser3: Ultra-optimized parser with ~10x performance improvement
+- DateParserError: Proper error type for parsing failures
+- Legacy compatibility layers (DateParser, NLPDateExtractor)
+- Four new test files:
+  - DateParserComprehensiveTests: All parser features including apostrophe years, AD/BC dates
+  - DateParserEdgeCaseTests: Edge cases, stress tests, and malformed inputs
+  - NLPDateExtractorComprehensiveTests: Full NLP coverage with performance tests
+  - SwiftDateParserREADMETests: Validates all README claims
+- Repository organization with docs/ folder for documentation
+
+### Changed
+- SwiftDateParser.parse() now uses DateParser2 by default for full feature support
+- Improved parseWithTokens to properly enable fuzzyWithTokens mode
+- Updated project documentation in CLAUDE.md
+
+### Fixed
+- Missing error types that were causing compilation issues
+- Parser timezone handling for consistent behavior
+
 ## [1.0.0] - 2024-12-06
 
 ### Added

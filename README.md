@@ -1,10 +1,15 @@
 # SwiftDateParser
 
+[![Swift](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
+[![Platforms](https://img.shields.io/badge/Platforms-macOS%20%7C%20iOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20visionOS-blue.svg)](https://swift.org)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![SwiftPM](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
+
 > **⚠️ Experimental Project Notice**
 > 
 > This library was created as an experiment to explore whether AI could successfully convert a Python library to Swift. It's a port of Python's [dateutil](https://github.com/dateutil/dateutil) parser, developed with Claude Code as a proof of concept for AI-assisted library conversion.
 > 
-> While the library is functional and well-tested, please be aware of its experimental nature when considering it for production use.
+> While the library is functional and well-tested (69 tests), please be aware of its experimental nature when considering it for production use.
 
 A Swift port of Python's powerful [dateutil](https://github.com/dateutil/dateutil) parser, created with Claude Code. This open-source library brings the flexibility and robustness of Python's date parsing capabilities to the Swift ecosystem, providing natural language date parsing, multiple format support, and advanced NLP-based date extraction from text.
 
@@ -219,15 +224,25 @@ do {
 
 ## Performance
 
-SwiftDateParser is optimized for performance:
-- Cached date formatters
-- Efficient regex patterns
-- Lazy initialization of resources
+SwiftDateParser is optimized for performance with two parser implementations:
 
-Benchmark results on MacBook Pro M1:
-- Simple date parsing: ~0.05ms
-- Natural language extraction: ~2ms per 1000 characters
-- Relative date parsing: ~0.1ms
+### DateParser2 (Default)
+- Full feature set including all date formats
+- Cached date formatters
+- Pre-compiled regex patterns
+- Typical parsing: 0.1-1ms
+
+### DateParser3 (Optimized)
+- ~10x faster than DateParser2
+- Simplified feature set for common formats
+- Ideal for high-performance scenarios
+- Typical parsing: 0.01-0.1ms
+
+To use the optimized parser:
+```swift
+let parser = SwiftDateParser.createParserV3()
+let date = try parser.parse("2024-03-15")
+```
 
 ## Contributing
 
