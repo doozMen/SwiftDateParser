@@ -16,7 +16,7 @@ import Foundation
 /// ```
 public struct SwiftDateParser {
     /// The current version of SwiftDateParser
-    public static let version = "1.0.0"
+    public static let version = "1.0.1"
     
     /// Create a default DateParser instance (uses optimized DateParser2)
     public static func createParser(

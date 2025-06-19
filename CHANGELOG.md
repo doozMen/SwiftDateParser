@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2025-01-19
+
+### Added
+- Unit tests for relative date parsing behavior (RelativeDateTests.swift)
+- Tests to verify relative dates are calculated from current system time
+- Tests for defaultDate usage with partial date parsing
+
+### Fixed
+- Clarified that relative dates ("today", "yesterday", "tomorrow") are correctly calculated from the current system time
+- Clarified that defaultDate is used for providing default components when parsing partial dates (e.g., time-only strings)
+
+### Documentation
+- Added comprehensive test suite demonstrating proper behavior of relative date parsing
+- Added tests showing how defaultDate affects partial date parsing
+
+## [1.0.0+improvements] - 2024-12-06
+
 ### Added
 - Comprehensive test suite with 69 tests across 7 test suites
 - DateParser2: Full-featured parser with all capabilities
