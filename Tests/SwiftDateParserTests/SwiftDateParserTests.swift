@@ -35,7 +35,7 @@ struct SwiftDateParserTests {
     
     @Test("Version string")
     func testVersionString() {
-        #expect(SwiftDateParser.version == "1.0.0")
+        #expect(SwiftDateParser.version == "1.0.1")
     }
     
     @Test("Create parser factory")

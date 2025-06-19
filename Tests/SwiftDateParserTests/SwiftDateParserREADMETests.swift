@@ -318,6 +318,6 @@ struct SwiftDateParserREADMETests {
     
     @Test("README: Version string")
     func testVersion() {
-        #expect(SwiftDateParser.version == "1.0.0", "Version should match README")
+        #expect(SwiftDateParser.version == "1.0.1", "Version should match README")
     }
 }
